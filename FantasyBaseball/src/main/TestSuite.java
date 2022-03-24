@@ -9,7 +9,8 @@ import static org.junit.Assert.*;
 @Suite.SuiteClasses({
         PlayersTest.class,
         TeamOptionsTest.class,
-        TeamOptionsTest.class
+        TeamOptionsTest.class,
+        SetStateTest.class
 })
 public class TestSuite {
 
