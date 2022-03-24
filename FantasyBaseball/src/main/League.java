@@ -1,19 +1,19 @@
 package main;
 
-public class Teams {
+public class League {
     private String TeamA;
     private String TeamB;
     private String TeamC;
     private String TeamD;
 
-    public Teams(String teamA, String teamB, String teamC, String teamD) {
+    public League(String teamA, String teamB, String teamC, String teamD) {
         TeamA = teamA;
         TeamB = teamB;
         TeamC = teamC;
         TeamD = teamD;
     }
 
-    public Teams() {
+    public League() {
     }
 
     public String getTeamA() {
