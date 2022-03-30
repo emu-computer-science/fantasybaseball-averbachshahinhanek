@@ -22,9 +22,6 @@ public class TeamOptions {
 
     }
 
-    void RestoreFile(){
-
-    }
 
     void EVALFUN(){
 
