@@ -33,7 +33,12 @@ public abstract class Teams {
         LEFT_FIELDER,
         RIGHT_FIELDER,
         CENTER_FIELDER,
-        PICHERS,//5 Pitchers
+        PITCHERS,//5 Pitchers
+    }
+
+    public boolean contains(EntryType player) {
+
+        return false;
     }
 
     public Teams(String name, EntryType bodyType) {
@@ -42,10 +47,6 @@ public abstract class Teams {
        // this.orbitalPeriod = orbitalPeriod;
         this.Players = new HashSet<>();
     }
-
-//    public double getOrbitalPeriod() {
-//        return orbitalPeriod;
-//    }
 
     public Key getKey() {
         return key;
@@ -123,5 +124,4 @@ public abstract class Teams {
             return this.name + ": " + this.entryType;
         }
     }
-
 }

@@ -1,139 +1,60 @@
 package testing;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.io.File;
+import java.util.*;
 
 public class Main {
     //private static Map<Teams.Key, Teams> solarSystem = new HashMap<>();
     private static Map<Teams.Key, Teams> mapContainer = new HashMap<>();
     private static Set<Teams> leagueMembers = new HashSet<>();
 
-    public static void main(String[] args) {
-        Teams league = new TeamsMembers("MemberA");
-        mapContainer.put(league.getKey(), league);
-        leagueMembers.add(league);
+    private static String[] arguments = new String[5];
+    public static void main(String[] args) throws Exception {
+        Scanner scan = new Scanner(System.in);
+        Teams team1, team2, team3, team4;
+        System.out.println("Please add 4 teams:");
+
+        team1 = new TeamsMembers(scan.next());
+        team2 = new TeamsMembers(scan.next());
+        team3 = new TeamsMembers(scan.next());
+        team4 = new TeamsMembers(scan.next());
+
+        mapContainer.put(team1.getKey(),team1);
+        mapContainer.put(team2.getKey(),team2);
+        mapContainer.put(team3.getKey(),team3);
+        mapContainer.put(team4.getKey(), team4);
+
+        //Creation of databases
+        DataBase db = new DataBase();
+        db.initializePitcher(new File("C:/users/averb/Documents/COSC_381/Semester Project 1/Data/Pitchers.txt"));
+        db.initializeBatters(new File("C:/users/averb/Documents/COSC_381/Semester Project 1/Data/Batters.txt"));
 
 
-        Teams tempMoon = new Moon("Player1");
-        mapContainer.put(tempMoon.getKey(), tempMoon);
-        league.addPlayers(tempMoon);
+        while(true) {
+            System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
+                    "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL");
+            String input = scan.next();
+            arguments = input.split(" ");
 
-//        Teams.addLeagueMembers(new TeamsMembers("MemberA"));
-//        Teams.addLeagueMembers(new TeamsMembers("MemberB"));
-//        Teams.addLeagueMembers(new TeamsMembers("MemberC"));
-//        Teams.addLeagueMembers(new TeamsMembers("MemberD"));
+            String currTeam;
+            System.out.print("Please select a team: ");
+            currTeam = scan.next();
 
-        league = new TeamsMembers("MemberB");
-        mapContainer.put(league.getKey(), league);
-        leagueMembers.add(league);
+            if(arguments[0].equals("ODRAFT")) {
+                for(Teams.Key item : mapContainer.keySet()) {
+                    if(item.getName().equalsIgnoreCase(arguments[2])) {
+                        //TODO NEED TO F
+                    }
+                }
+            } else if(arguments[0].equals("IDRAFT")) {
 
-        league = new TeamsMembers("MemberC");
-        mapContainer.put(league.getKey(), league);
-        leagueMembers.add(league);
+            } else if(arguments[0].equals("OVERALL")) {
 
-         tempMoon = new Moon("Player1");
-        mapContainer.put(tempMoon.getKey(), tempMoon);
-        league.addPlayers(tempMoon);
+            } else if(arguments[0].equals("POVERALL")) {
 
-
-
-        league = new TeamsMembers("Player1");
-        mapContainer.put(league.getKey(), league);
-        leagueMembers.add(league);
-//
-//        tempMoon = new Moon("Deimos");
-//        mapContainer.put(tempMoon.getKey(), tempMoon);
-//        league.addPlayers(tempMoon); // league is still Mars
-//
-//        tempMoon = new Moon("Phobos");
-//        mapContainer.put(tempMoon.getKey(), tempMoon);
-//        league.addPlayers(tempMoon); // league is still Mars
-//
-//        league = new TeamsMembers("Jupiter");
-//        mapContainer.put(league.getKey(), league);
-//        leagueMembers.add(league);
-//
-//        tempMoon = new Moon("Io");
-//        mapContainer.put(tempMoon.getKey(), tempMoon);
-//        league.addPlayers(tempMoon); // league is still Jupiter
-//
-//        tempMoon = new Moon("Europa");
-//        mapContainer.put(tempMoon.getKey(), tempMoon);
-//        league.addPlayers(tempMoon); // league is still Jupiter
-//
-//        tempMoon = new Moon("Ganymede");
-//        mapContainer.put(tempMoon.getKey(), tempMoon);
-//        league.addPlayers(tempMoon); // league is still Jupiter
-//
-//        tempMoon = new Moon("Callisto");
-//        mapContainer.put(tempMoon.getKey(), tempMoon);
-//        league.addPlayers(tempMoon); // league is still Jupiter
-//
-//        league = new TeamsMembers("Saturn");
-//        mapContainer.put(league.getKey(), league);
-//        leagueMembers.add(league);
-//
-//        league = new TeamsMembers("Uranus");
-//        mapContainer.put(league.getKey(), league);
-//        leagueMembers.add(league);
-//
-//        league = new TeamsMembers("Neptune");
-//        mapContainer.put(league.getKey(), league);
-//        leagueMembers.add(league);
-//
-//        league = new TeamsMembers("Pluto");
-//        mapContainer.put(league.getKey(), league);
-//        leagueMembers.add(league);
-
-//        System.out.println("Planets");
-//        for(Teams planet : leagueMembers) {
-//            System.out.println("\t" + planet.getKey());
-//        }
-//
-//        Teams body = mapContainer.get(Teams.makeKey("Mars", Teams.EntryType.LEAGUE_MEMBER));
-//        System.out.println("Moons of " + body.getKey());
-//        for(Teams jupiterMoon: body.getPlayers()) {
-//            System.out.println("\t" + jupiterMoon.getKey());
-//        }
-//
-//        Set<Teams> moons = new HashSet<>();
-//        for(Teams planet : leagueMembers) {
-//            moons.addAll(planet.getPlayers());
-//        }
-//        //printAll(leagueMembers,Teams.getPlayers());
-//        System.out.println("All Moons");
-//        for(Teams moon : moons) {
-//            System.out.println("\t" + moon.getKey());
-//        }
-//
-//        Teams pluto = new Catcher("Pluto", 842);
-//        leagueMembers.add(pluto);
-//
-//        for(Teams planet : leagueMembers) {
-//            System.out.println(planet);
-////            System.out.println(planet.getKey() + ": " + planet.getOrbitalPeriod());
-//        }
-//
-//        Teams earth1 = new TeamsMembers("Earth");
-//        Teams earth2 = new TeamsMembers("Earth");
-//        System.out.println(earth1.equals(earth2));
-//        System.out.println(earth2.equals(earth1));
-//        System.out.println(earth1.equals(pluto));
-//        System.out.println(pluto.equals(earth1));
-//
-//        mapContainer.put(pluto.getKey(), pluto);
-//        System.out.println(mapContainer.get(Teams.makeKey("Pluto", Teams.EntryType.LEAGUE_MEMBER)));
-//        System.out.println(mapContainer.get(Teams.makeKey("Pluto", Teams.EntryType.DWARF_PLANET)));
-//
-//        System.out.println();
-//        System.out.println("The solar system contains:");
-//        for(Teams heavenlyBody : mapContainer.values()) {
-//            System.out.println(heavenlyBody);
-//        }
-
+            } else {
+                System.out.println("Invalid command/arguments");
+            }
+        }
     }
-
-
 }

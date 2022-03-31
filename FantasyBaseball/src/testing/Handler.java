@@ -1,6 +1,11 @@
 package testing;
 
+import java.util.ArrayList;
+
 public class Handler {
+    ArrayList<String> draftedDB = new ArrayList<>(); //Holds players who've already been drafted
+
+
 
     public static class Catcher extends Teams {
 
@@ -61,7 +66,7 @@ public class Handler {
     public static class Pitchers extends Teams {
 
         public Pitchers(String name) {
-            super(name, Teams.EntryType.PICHERS);
+            super(name, Teams.EntryType.PITCHERS);
         }//PICHERS
     }
 
