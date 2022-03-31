@@ -109,75 +109,79 @@ public class Team {
         return team;
     }
 
+    //Doesn't work well atm.
     public void printTeam() {
         for(int c = 0; c < this.team.size(); c++) {
-            for(Players p : this.team) {
+            for(int d = 0; d < this.team.size(); d++) {
                 switch(c) {
                     case 0:
-                        if(p.getPosition().equals("C")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("C")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 1:
-                        if(p.getPosition().equals("1B")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("1B")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 2:
-                        if(p.getPosition().equals("2B")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).equals("2B")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 3:
-                        if(p.getPosition().equals("3B")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("3B")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 4:
-                        if(p.getPosition().equals("SS")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("SS")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 5:
-                        if(p.getPosition().equals("LF")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("LF")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 6:
-                        if(p.getPosition().equals("CF")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("RF")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 7:
-                        if(p.getPosition().equals("RF")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("CF")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 8:
-                        if(p.getPosition().equals("P")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("P")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 9:
-                        if(p.getPosition().equals("P")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("P")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 10:
-                        if(p.getPosition().equals("P")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("P")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 11:
-                        if(p.getPosition().equals("P")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("P")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
                     case 12:
-                        if(p.getPosition().equals("P")) {
-                            System.out.println(p.toString());
-                            break;
+                        if(team.get(d).getPosition().equals("P")) {
+                            System.out.println(team.get(d).toString());
+                            continue;
                         }
+                    default:
+                        System.out.println("An unknown error has occurred.");
+                        return;
                 }
             }
         }

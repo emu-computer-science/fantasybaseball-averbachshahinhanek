@@ -28,7 +28,10 @@ public class DataBase {
         //To store pitcher data
         while((data = reader.readLine()) != null) {
             line = data.split(" ");
-            pitcher.add(new Pitcher((line[0] + " " + line[1]), line[2],"P",Double.parseDouble(line[6])));
+
+            line[0] = line[0].substring(0,1);
+            line[1] = line[1] + ",";
+            pitcher.add(new Pitcher((line[1] + " " + line[0]), line[2],"P",Double.parseDouble(line[6])));
         }
         reader.close();
     }
@@ -42,67 +45,69 @@ public class DataBase {
         while((data = reader.readLine()) != null) {
             line = data.split(" ");
 
+            line[0] = line[0].substring(0,1);
+            line[1] = line[1] + ",";
             if(line.length - 1 <= 15)
-               allNonPitchers.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+               allNonPitchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
             else
-                allNonPitchers.add(new NonPitcher((line[0] + " " + line[1]), line[3], line[2], Double.parseDouble(line[16])));
+                allNonPitchers.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[16])));
 
             switch(line[2]) {
                 case "C":
                     if(line.length - 1 <= 15) {
-                        catchers.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        catchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    catchers.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                    catchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "1B":
                     if(line.length - 1 <= 15) {
-                        firstBase.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        firstBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    firstBase.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                    firstBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "2B":
                     if(line.length - 1 <= 15) {
-                        secondBase.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        secondBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    secondBase.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                    secondBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "3B":
                     if(line.length - 1 <= 15) {
-                        thirdBase.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        thirdBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    thirdBase.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                    thirdBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "SS":
                     if(line.length - 1 <= 15) {
-                        SS.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        SS.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    SS.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                    SS.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "LF":
                     if(line.length - 1 <= 15) {
-                        leftField.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        leftField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    leftField.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                    leftField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "CF":
                     if(line.length - 1 <= 15) {
-                        centerField.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        centerField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                   centerField.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                   centerField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "RF":
                     if(line.length - 1 <= 15) {
-                        rightField.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],0));
+                        rightField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    rightField.add(new NonPitcher((line[0] + " " + line[1]),line[3],line[2],Double.parseDouble(line[16])));
+                    rightField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 default:
                     break;

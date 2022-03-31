@@ -33,9 +33,14 @@ public class Main {
              String input = reader.readLine();
              arguments = input.split(" ");
 
+
             if(arguments[0].equals("ODRAFT")) {
+                arguments[1] = arguments[1].substring(1);
+                arguments[2] = arguments[2].substring(0,arguments[2].length() - 1);
                 db.getPlayer((arguments[1] + " " + arguments[2]), mlb.getTeam(arguments[3]));
             } else if(arguments[0].equals("IDRAFT")) {
+                arguments[1] = arguments[1].substring(1);
+                arguments[2] = arguments[2].substring(0,arguments[2].length() - 1);
                 db.getPlayer((arguments[1] + " " + arguments[2]), mlb.getTeam(0)); //Uses the primary team.
             } else if(arguments[0].equals("OVERALL") && arguments.length - 1 < 1) {
                 mlb.getTeam(0).displayPos(db.getAllNonPitchers());
