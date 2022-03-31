@@ -161,7 +161,7 @@ public class DataBase {
             if(player.getName().equalsIgnoreCase(name)) {
                 if(!team.addPlayer(player)) {
                     return;
-                }a
+                }
                 allNonPitchers.remove(player); //Removes him from the draft list
                 return;
             }
