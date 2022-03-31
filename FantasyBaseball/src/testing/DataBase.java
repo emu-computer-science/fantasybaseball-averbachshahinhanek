@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class DataBase {
-
     ArrayList<NonPitcher> catchers = new ArrayList<>();
     ArrayList<NonPitcher> firstBase = new ArrayList<>();
     ArrayList<NonPitcher> secondBase = new ArrayList<>();
@@ -19,20 +18,17 @@ public class DataBase {
     ArrayList<NonPitcher> allNonPitchers = new ArrayList<>();
     ArrayList<Pitcher> pitcher = new ArrayList<>();
 
-    ArrayList<NonPitcher> draftedBatters = new ArrayList<>();
-    ArrayList<Pitcher> draftedPitchers = new ArrayList<>();
-
     public DataBase() {}
 
     public void initializePitcher(File database) throws Exception {
         BufferedReader reader = new BufferedReader(new FileReader(database));
         String data; //Holds contents of a line of the database
         String[] line = new String[10];
-
+        int tempC = 0;
         //To store pitcher data
         while((data = reader.readLine()) != null) {
-            line = data.split(",");
-            pitcher.add(new Pitcher(line[0],line[2],"P",Double.parseDouble(line[6])));
+            line = data.split(" ");
+            pitcher.add(new Pitcher((line[0] + " " + line[1]), line[2],"P",Double.parseDouble(line[6])));
         }
         reader.close();
     }
@@ -155,18 +151,72 @@ public class DataBase {
         }
     }
 
-    public Teams getBatter(String playerName) {
+    public void getPlayer(String name, Team team) {
         for(NonPitcher player : allNonPitchers) {
-            if(playerName.equalsIgnoreCase(player.getName())) {
-                return player;
+            if(player.getName().equalsIgnoreCase(name)) {
+                if(!team.addPlayer(player)) {
+                    return;
+                }
+                allNonPitchers.remove(player); //Removes him from the draft list
+                return;
             }
         }
+
         for(Pitcher player : pitcher) {
-            if(playerName.equalsIgnoreCase(player.getName())) {
-                return player;
+            if(player.getName().equalsIgnoreCase(name)) {
+                if(!team.addPlayer(player))
+                    return;
+                pitcher.remove(player); //Removes player from draft list
+                return;
             }
         }
-        System.out.println("Player does not exists in database");
-        return null;
+
+        System.out.println("Could not find: " + name + " in the database.");
+    }
+
+    public void print() {
+        for(NonPitcher i : allNonPitchers) {
+            System.out.println(i.toString());
+        }
+    }
+
+    public ArrayList<NonPitcher> getCatchers() {
+        return catchers;
+    }
+
+    public ArrayList<NonPitcher> getFirstBase() {
+        return firstBase;
+    }
+
+    public ArrayList<NonPitcher> getSecondBase() {
+        return secondBase;
+    }
+
+    public ArrayList<NonPitcher> getThirdBase() {
+        return thirdBase;
+    }
+
+    public ArrayList<NonPitcher> getSS() {
+        return SS;
+    }
+
+    public ArrayList<NonPitcher> getLeftField() {
+        return leftField;
+    }
+
+    public ArrayList<NonPitcher> getCenterField() {
+        return centerField;
+    }
+
+    public ArrayList<NonPitcher> getRightField() {
+        return rightField;
+    }
+
+    public ArrayList<NonPitcher> getAllNonPitchers() {
+        return allNonPitchers;
+    }
+
+    public ArrayList<Pitcher> getPitcher() {
+        return pitcher;
     }
 }

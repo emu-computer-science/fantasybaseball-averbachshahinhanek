@@ -1,29 +1,25 @@
 package testing;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-    //private static Map<Teams.Key, Teams> solarSystem = new HashMap<>();
-    private static Map<Teams.Key, Teams> mapContainer = new HashMap<>();
-    private static Set<Teams> leagueMembers = new HashSet<>();
-
     private static String[] arguments = new String[5];
+
     public static void main(String[] args) throws Exception {
-        Scanner scan = new Scanner(System.in);
-        Teams team1, team2, team3, team4;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        //Scanner scan = new Scanner(System.in);
+        League mlb = new League();
         System.out.println("Please add 4 teams:");
 
-        team1 = new TeamsMembers(scan.next());
-        team2 = new TeamsMembers(scan.next());
-        team3 = new TeamsMembers(scan.next());
-        team4 = new TeamsMembers(scan.next());
+        //Add 4 teams
+        for(int i = 0; i < 4; i++) {
+            mlb.addTeam(reader.readLine());
+        }
 
-        mapContainer.put(team1.getKey(),team1);
-        mapContainer.put(team2.getKey(),team2);
-        mapContainer.put(team3.getKey(),team3);
-        mapContainer.put(team4.getKey(), team4);
-
+        //scan.nextLine();
         //Creation of databases
         DataBase db = new DataBase();
         db.initializePitcher(new File("C:/users/averb/Documents/COSC_381/Semester Project 1/Data/Pitchers.txt"));
@@ -33,28 +29,34 @@ public class Main {
         while(true) {
             System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
                     "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL");
-            String input = scan.next();
-            arguments = input.split(" ");
 
-            String currTeam;
-            System.out.print("Please select a team: ");
-            currTeam = scan.next();
+             String input = reader.readLine();
+             arguments = input.split(" ");
 
             if(arguments[0].equals("ODRAFT")) {
-                for(Teams.Key item : mapContainer.keySet()) {
-                    if(item.getName().equalsIgnoreCase(arguments[2])) {
-                        //TODO NEED TO F
+                db.getPlayer((arguments[1] + " " + arguments[2]), mlb.getTeam(arguments[3]));
+            } else if(arguments[0].equals("IDRAFT")) {
+                db.getPlayer((arguments[1] + " " + arguments[2]), mlb.getTeam(0)); //Uses the primary team.
+            } else if(arguments[0].equals("OVERALL") && arguments.length - 1 < 1) {
+                mlb.getTeam(0).displayPos(db.getAllNonPitchers());
+            } else if(arguments[0].equals("OVERALL")) {
+                mlb.getTeam(0).displayPos(arguments[1],db.getAllNonPitchers()); //Client team
+            } else if(arguments[0].equals("POVERALL")) {
+                mlb.getTeam(0).displayPitch(db.getPitcher());
+            } else if(arguments[0].equals("TEAM") && arguments.length - 1 == 1){
+                for(Team i : mlb.getTeams()) {
+                    if(i.getName().equals(arguments[1])){
+                        i.printTeam();
                     }
                 }
-            } else if(arguments[0].equals("IDRAFT")) {
-
-            } else if(arguments[0].equals("OVERALL")) {
-
-            } else if(arguments[0].equals("POVERALL")) {
-
-            } else {
-                System.out.println("Invalid command/arguments");
             }
+
+            System.out.print("\nExit? (Y/N): ");
+            if(reader.readLine().equalsIgnoreCase("Y")) {
+                reader.close();
+                break;
+            } else
+                continue;
         }
     }
 }

@@ -1,6 +1,6 @@
 package testing;
 
-public class Pitcher extends Teams {
+public class Pitcher extends Players{
     private String name;
     private String team;
     private String position;
@@ -8,7 +8,7 @@ public class Pitcher extends Teams {
 
     //Only for pitchers
     public Pitcher(String name, String team, String position, double ip) {
-        super(name, Teams.EntryType.CATCHER);
+        super(name,team,position);
         this.name = name;
         this.team = team;
         this.position = position;

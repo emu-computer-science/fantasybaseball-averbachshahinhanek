@@ -1,6 +1,6 @@
 package testing;
 
-public class NonPitcher extends Teams {
+public class NonPitcher extends Players{
     private String name;
     private String team;
     private String position;
@@ -8,7 +8,7 @@ public class NonPitcher extends Teams {
 
     //Generic NonPitcher class to hold all non-pitchers
     public NonPitcher(String name, String team, String position, double avg) {
-        super(name, Teams.EntryType.CATCHER);
+        super(name,team,position);
         this.name = name;
         this.team = team;
         this.position = position;
