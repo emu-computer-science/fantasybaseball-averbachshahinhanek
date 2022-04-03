@@ -15,6 +15,7 @@ public class NonPitcher extends Players{
         this.avg = avg;
     }
 
+    //TO String Method and getter methods
     @Override
     public String toString() {
         return name + " " + team + " " + position + " " + avg;

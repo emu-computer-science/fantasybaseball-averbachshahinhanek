@@ -15,6 +15,7 @@ public class Pitcher extends Players{
         this.ip = ip;
     }
 
+    //To String Methods and Getter Methods
     @Override
     public String toString() {
         return this.name + " " + this.team + " " + this.position + " " + this.ip;

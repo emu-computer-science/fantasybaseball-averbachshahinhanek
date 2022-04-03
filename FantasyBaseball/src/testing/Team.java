@@ -187,7 +187,7 @@ public class Team {
         }
     }
 
-    //Main method for POVERAL command
+    //Main method for POVERALL command
     public void displayPitch(ArrayList<Pitcher> pitchers) {
         if(this.getPitcherC() == 0) {
             System.out.println("You already drafted 5 Pitchers.");
@@ -259,6 +259,7 @@ public class Team {
         }
     }
 
+    //Getter methods
     public int getCatcherC() {
         return catcherC;
     }
@@ -295,6 +296,8 @@ public class Team {
         return pitcherC;
     }
 
+
+    //Checks to see if a player has been drafted by checking if their position variables are set to 0
     public boolean isDrafted(String position) {
         switch(position) {
             case "C":

@@ -10,6 +10,7 @@ public class League {
         teams.add(new Team(name));
     }
 
+    //Finds provided team
     public Team getTeam(String teamName) {
         for(Team t : teams) {
             if(t.getName().equalsIgnoreCase(teamName)) {
@@ -19,11 +20,12 @@ public class League {
 
         return null;
     }
-
+    //Gets team based on index
     public Team getTeam(int index) {
         return teams.get(index);
     }
 
+    //Getter Method for team
     public ArrayList<Team> getTeams() {
         return teams;
     }

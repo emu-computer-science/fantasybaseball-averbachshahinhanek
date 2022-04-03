@@ -14,10 +14,10 @@ public class Main {
         League mlb = new League();
         System.out.println("Please add 4 teams:");
 
-        //Add 4 teams
-        for(int i = 0; i < 4; i++) {
-            mlb.addTeam(reader.readLine());
-        }
+        mlb.addTeam("A");
+        mlb.addTeam("B");
+        mlb.addTeam("C");
+        mlb.addTeam("D");
 
         //scan.nextLine();
         //Creation of databases
@@ -42,6 +42,7 @@ public class Main {
                 arguments[1] = arguments[1].substring(1);
                 arguments[2] = arguments[2].substring(0,arguments[2].length() - 1);
                 db.getPlayer((arguments[1] + " " + arguments[2]), mlb.getTeam(0)); //Uses the primary team.
+
             } else if(arguments[0].equals("OVERALL") && arguments.length - 1 < 1) {
                 mlb.getTeam(0).displayPos(db.getAllNonPitchers());
             } else if(arguments[0].equals("OVERALL")) {
@@ -55,13 +56,6 @@ public class Main {
                     }
                 }
             }
-
-            System.out.print("\nExit? (Y/N): ");
-            if(reader.readLine().equalsIgnoreCase("Y")) {
-                reader.close();
-                break;
-            } else
-                continue;
         }
     }
 }
