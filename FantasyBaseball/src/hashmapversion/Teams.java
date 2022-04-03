@@ -52,6 +52,7 @@ public abstract class Teams {
         return key;
     }
 
+
     public boolean addPlayers(Teams teams) {
         return this.Players.add(teams);
     }
@@ -121,10 +122,98 @@ public abstract class Teams {
 
         @Override
         public String toString() {
-            return this.name + ": " + this.entryType;
+            //return this.name + ": " + this.entryType;
+            return this.name + ": " + getPosition(this.entryType);
         }
     }
+//    static String getPosition(String type){
+//        switch (type){
+//            case "CATCHER":
+//                return "C";
+//
+//            case "FIRST_BASEMAN":
+//                return "1B";
+//
+//            case "SECOND_BASEMAN":
+//                return "2B";
+//
+//            case "THIRD_BASEMAN":
+//                return "3B";
+//
+//            case "SHORT_STOP":
+//                return "SS";
+//
+//            case "LEFT_FIELDER":
+//                return "LF";
+//
+//            case "RIGHT_FIELDER":
+//                return "RT";
+//
+//            case "CENTER_FIELDER":
+//                return "CF";
+//
+//            case "PICHER1":
+//                return "P1";
+//
+//            case "PICHER2":
+//                return "P2";
+//
+//            case "PICHER3":
+//                return "P3";
+//
+//            case "PICHER4":
+//                return "P4";
+//
+//            case "PICHER5":
+//                return "P5";
+//
+//        }
+//        return null;
+//    }
 
+    static String getPosition(EntryType type){
+        switch (type){
+            case CATCHER:
+                return "C";
 
+            case FIRST_BASEMAN:
+                return "1B";
+
+            case SECOND_BASEMAN:
+                return "2B";
+
+            case THIRD_BASEMAN:
+                return "3B";
+
+            case SHORT_STOP:
+                return "SS";
+
+            case LEFT_FIELDER:
+                return "LF";
+
+            case RIGHT_FIELDER:
+                return "RT";
+
+            case CENTER_FIELDER:
+                return "CF";
+
+            case PICHER1:
+                return "P1";
+
+            case PICHER2:
+                return "P2";
+
+            case PICHER3:
+                return "P3";
+
+            case PICHER4:
+                return "P4";
+
+            case PICHER5:
+                return "P5";
+
+        }
+        return null;
+    }
 
 }

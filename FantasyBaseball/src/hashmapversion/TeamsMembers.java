@@ -8,9 +8,9 @@ public class TeamsMembers extends Teams {
     }
 
     @Override
-    public boolean addPlayers(Teams moon) {
-//        if(moon.getKey().getEntryType() == EntryType.PLAYERS) {
-            return super.addPlayers(moon);
+    public boolean addPlayers(Teams teams) {
+//        if(teams.getKey().getEntryType() == EntryType.PLAYERS) {
+            return super.addPlayers(teams);
 //        } else {
 //            return false;
 //        }
