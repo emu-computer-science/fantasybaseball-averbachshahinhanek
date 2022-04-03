@@ -1,5 +1,7 @@
 package testing;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
@@ -9,10 +11,12 @@ public class Main {
     private static String[] arguments = new String[5];
 
     public static void main(String[] args) throws Exception {
+        //Implements script manager
+        ScriptEngineManager manager = new ScriptEngineManager();
+        ScriptEngine engine = manager.getEngineByName("JavaScript");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         //Scanner scan = new Scanner(System.in);
         League mlb = new League();
-        System.out.println("Please add 4 teams:");
 
         mlb.addTeam("A");
         mlb.addTeam("B");
@@ -22,13 +26,13 @@ public class Main {
         //scan.nextLine();
         //Creation of databases
         DataBase db = new DataBase();
-        db.initializePitcher(new File("C:/users/averb/Documents/COSC_381/Semester Project 1/Data/Pitchers.txt"));
-        db.initializeBatters(new File("C:/users/averb/Documents/COSC_381/Semester Project 1/Data/Batters.txt"));
+        db.initializePitcher(new File("Pitchers.txt"));
+        db.initializeBatters(new File("Batters.txt"));
 
 
         while(true) {
             System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
-                    "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL");
+                    "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tQuit");
 
              String input = reader.readLine();
              arguments = input.split(" ");
@@ -55,6 +59,8 @@ public class Main {
                         i.printTeam();
                     }
                 }
+            } else if (arguments[0].equalsIgnoreCase("Quit")) { //Exits the Program
+                break;
             }
         }
     }

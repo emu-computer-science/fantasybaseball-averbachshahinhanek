@@ -36,7 +36,7 @@ public class DataBase {
 
             line[0] = line[0].substring(0,1);
             line[1] = line[1] + ",";
-            //Format example: [Last name, first initial, position, team, IP]
+            //Format example: [Last name, first initial, team, position, IP]
             pitcher.add(new Pitcher((line[1] + " " + line[0]), line[2],"P",Double.parseDouble(line[6])));
         }
         reader.close();
@@ -72,7 +72,7 @@ public class DataBase {
                         catchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                     catchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "1B":
@@ -80,7 +80,7 @@ public class DataBase {
                         firstBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                     firstBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "2B":
@@ -88,7 +88,7 @@ public class DataBase {
                         secondBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                     secondBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "3B":
@@ -96,7 +96,7 @@ public class DataBase {
                         thirdBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                     thirdBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "SS":
@@ -104,7 +104,7 @@ public class DataBase {
                         SS.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                     SS.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "LF":
@@ -112,7 +112,7 @@ public class DataBase {
                         leftField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                     leftField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "CF":
@@ -120,7 +120,7 @@ public class DataBase {
                         centerField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                    centerField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 case "RF":
@@ -128,7 +128,7 @@ public class DataBase {
                         rightField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
                         break;
                     }
-                    //Format example: [Last name, first initial, position, team, AVG]
+                    //Format example: [Last name, first initial, team, position, AVG]
                     rightField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
                     break;
                 default:
@@ -143,48 +143,49 @@ public class DataBase {
             case "C":
                 //Prints out all catchers in format below
                 for(NonPitcher player : catchers)
-                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, position, team, AVG]
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             case "1B":
                 //Prints out all first basemen in format below
                 for(NonPitcher player : firstBase)
-                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, position, team, AVG]
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             case "2B":
                 //Prints out all second basemen in format below
                 for(NonPitcher player : secondBase)
-                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, position, team, AVG]
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             case "3B":
                 //Prints out all third basemen in format below
                 for(NonPitcher player : thirdBase)
-                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, position, team, AVG]
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             case "SS":
                 //Prints out all Short Stops in format below
                 for(NonPitcher player : SS)
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             case "LF":
                 //Prints out all left fielders in format below
                 for(NonPitcher player : leftField)
-                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, position, team, AVG]
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             case "CF":
                 //Prints out all center fielders in format below
                 for(NonPitcher player : centerField)
-                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, position, team, AVG]
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             case "RF":
                 //Prints out all right fielders in format below
                 for(NonPitcher player : rightField)
-                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, position, team, AVG]
+                    //Prints out player in the form of a non pitcher: Format example: [Last name, first initial, team, position, AVG]
                     System.out.println(player.toString());
                 break;
             default:
@@ -193,6 +194,7 @@ public class DataBase {
                 break;
         }
     }
+
     //Looks for provided player through both large databases and drafts them
     //into provided team.
     public void getPlayer(String name, Team team) {

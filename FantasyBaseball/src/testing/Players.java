@@ -4,6 +4,7 @@ public class Players {
     private String name;
     private String team;
     private String position;
+    private boolean drafted = false;
 
     //Constructor for generic player.
     public Players(String name, String team, String position) {
