@@ -1,6 +1,9 @@
 package testing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Team {
     private ArrayList<Players> team = new ArrayList<>();
@@ -28,6 +31,7 @@ public class Team {
                     System.out.println("Max Catchers reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 catcherC--;
                 return true;
@@ -36,6 +40,7 @@ public class Team {
                     System.out.println("Max first basemen reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 firstBaseC--;
                 return true;
@@ -44,6 +49,7 @@ public class Team {
                     System.out.println("Max second basemen reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 secondBaseC--;
                 return true;
@@ -52,6 +58,7 @@ public class Team {
                     System.out.println("Max third basemen reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 thirdBaseC--;
                 return true;
@@ -60,6 +67,7 @@ public class Team {
                     System.out.println("Max Short Stops reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 SSC--;
                 return true;
@@ -68,6 +76,7 @@ public class Team {
                     System.out.println("Max Left Fielders reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 leftFieldC--;
                 return true;
@@ -76,6 +85,7 @@ public class Team {
                     System.out.println("Max Center Fielders reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 centerFieldC--;
                 return true;
@@ -84,6 +94,7 @@ public class Team {
                     System.out.println("Max Right Fielders reached");
                     return false;
                 }
+                teammate.assignWeight(teammate.getPosition());
                 team.add(teammate);
                 rightFieldC--;
                 return true;
@@ -92,9 +103,41 @@ public class Team {
                     System.out.println("Max Pitchers reached");
                     return false;
                 }
-                team.add(teammate);
-                pitcherC--;
-                return true;
+
+                switch(pitcherC) {
+                    case 5:
+                        teammate.setPosition("P1");
+                        teammate.assignWeight(teammate.getPosition());
+                        team.add(teammate);
+                        pitcherC--;
+                        return true;
+                    case 4:
+                        teammate.setPosition("P2");
+                        teammate.assignWeight(teammate.getPosition());
+                        team.add(teammate);
+                        pitcherC--;
+                        return true;
+                    case 3:
+                        teammate.setPosition("P3");
+                        teammate.assignWeight(teammate.getPosition());
+                        team.add(teammate);
+                        pitcherC--;
+                        return true;
+                    case 2:
+                        teammate.setPosition("P4");
+                        teammate.assignWeight(teammate.getPosition());
+                        team.add(teammate);
+                        pitcherC--;
+                        return true;
+                    case 1:
+                        teammate.setPosition("P5");
+                        teammate.assignWeight(teammate.getPosition());
+                        team.add(teammate);
+                        pitcherC--;
+                        return true;
+                    default:
+                        System.out.println("An unknown error has occurred");
+                }
             default:
                 System.out.println("ERROR");
                 return false;
@@ -109,82 +152,16 @@ public class Team {
         return team;
     }
 
-    //Doesn't work well atm.
-    public void printTeam() {
-        for(int c = 0; c < this.team.size(); c++) {
-            for(int d = 0; d < this.team.size(); d++) {
-                switch(c) {
-                    case 0:
-                        if(team.get(d).getPosition().equals("C")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 1:
-                        if(team.get(d).getPosition().equals("1B")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 2:
-                        if(team.get(d).equals("2B")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 3:
-                        if(team.get(d).getPosition().equals("3B")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 4:
-                        if(team.get(d).getPosition().equals("SS")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 5:
-                        if(team.get(d).getPosition().equals("LF")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 6:
-                        if(team.get(d).getPosition().equals("RF")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 7:
-                        if(team.get(d).getPosition().equals("CF")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 8:
-                        if(team.get(d).getPosition().equals("P")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 9:
-                        if(team.get(d).getPosition().equals("P")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 10:
-                        if(team.get(d).getPosition().equals("P")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 11:
-                        if(team.get(d).getPosition().equals("P")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    case 12:
-                        if(team.get(d).getPosition().equals("P")) {
-                            System.out.println(team.get(d).toString());
-                            continue;
-                        }
-                    default:
-                        System.out.println("An unknown error has occurred.");
-                        return;
-                }
-            }
+    //Sorts based on players position
+    public void team() {
+        ArrayList<Players> temp = team;
+        Collections.sort(temp);
+
+        for(Players p : temp) {
+            System.out.println(p.getPosition() + " " + p.getName());
         }
+
+        System.out.println();
     }
 
     //Main method for POVERALL command
@@ -209,8 +186,6 @@ public class Team {
                 System.out.println(player.toString());
         }
     }
-
-
 
     //No arguments OVERALL method
     public void displayPos(ArrayList<NonPitcher> allNonPitchers) {
@@ -295,7 +270,6 @@ public class Team {
     public int getPitcherC() {
         return pitcherC;
     }
-
 
     //Checks to see if a player has been drafted by checking if their position variables are set to 0
     public boolean isDrafted(String position) {

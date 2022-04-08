@@ -33,6 +33,11 @@ public class NonPitcher extends Players{
         return position;
     }
 
+    @Override
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public double getAvg() {
         return avg;
     }

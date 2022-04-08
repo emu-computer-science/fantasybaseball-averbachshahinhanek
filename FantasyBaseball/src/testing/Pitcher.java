@@ -33,6 +33,10 @@ public class Pitcher extends Players{
         return position;
     }
 
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public double getIp() {
         return ip;
     }

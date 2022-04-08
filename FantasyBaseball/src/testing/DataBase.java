@@ -23,6 +23,9 @@ public class DataBase {
     ArrayList<NonPitcher> allNonPitchers = new ArrayList<>();
     ArrayList<Pitcher> pitcher = new ArrayList<>();
 
+    ArrayList<NonPitcher> draftedNPs = new ArrayList<>();
+    ArrayList<Pitcher> draftedP = new ArrayList<>();
+
     public DataBase() {}
 
     public void initializePitcher(File database) throws Exception {
@@ -200,24 +203,29 @@ public class DataBase {
     public void getPlayer(String name, Team team) {
         for(NonPitcher player : allNonPitchers) {
             if(player.getName().equalsIgnoreCase(name)) {
-                if(!team.addPlayer(player)) {
+                if(draftedNPs.contains(player)) {
+                    System.out.println(player.getName() + " has already been drafted.\n");
                     return;
                 }
-                allNonPitchers.remove(player); //Removes him from the draft list
+                team.addPlayer(player);
+                draftedNPs.add(player);
                 return;
             }
         }
 
         for(Pitcher player : pitcher) {
             if(player.getName().equalsIgnoreCase(name)) {
-                if(!team.addPlayer(player))
+                if(draftedP.contains(player)) {
+                    System.out.println(player.getName() + " has already been drafted.\n");
                     return;
-                pitcher.remove(player); //Removes player from draft list
+                }
+                team.addPlayer(player);
+                draftedP.add(player);
                 return;
             }
         }
-
-        System.out.println(name + " has already been drafted.");
+        //TODO NEED TO ADD DRAFTED PLAYERS TO SEPERATE DATABASE TO TEST IF DRAFTED
+        System.out.println("Could not locate: " + name + " in the MLB database.\n");
     }
 
     public void print() {
