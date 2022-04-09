@@ -31,9 +31,7 @@ public class Main {
 
 
         while(true) {
-            System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
-                    "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tQuit");
-
+             System.out.print("->");
              String input = reader.readLine();
              arguments = input.split(" ");
 
@@ -58,6 +56,9 @@ public class Main {
             } else if (arguments[0].equalsIgnoreCase("Quit")) { //Exits the Program
                 System.out.println("Thank you for using our draft system.\nGoodbye!");
                 break;
+            } else if(arguments[0].equalsIgnoreCase("help")){
+                System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
+                        "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tHelp\n\tQuit");
             } else {
                 System.out.println("Invalid command\n");
             }
