@@ -6,7 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Team {
-    private ArrayList<Players> team = new ArrayList<>();
+    private ArrayList<Players> team = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
+
     private String name;
 
     private int catcherC = 1;

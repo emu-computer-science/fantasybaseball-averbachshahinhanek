@@ -20,11 +20,11 @@ public class DataBase {
     ArrayList<NonPitcher> rightField = new ArrayList<>();
 
     //These hold all the Non-pitcher and the other holds all the pitchers
-    ArrayList<NonPitcher> allNonPitchers = new ArrayList<>();
-    ArrayList<Pitcher> pitcher = new ArrayList<>();
+    ArrayList<NonPitcher> allNonPitchers = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
+    ArrayList<Pitcher> pitcher = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
 
-    ArrayList<NonPitcher> draftedNPs = new ArrayList<>();
-    ArrayList<Pitcher> draftedP = new ArrayList<>();
+    ArrayList<NonPitcher> draftedNPs = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
+    ArrayList<Pitcher> draftedP = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
 
     public DataBase() {}
 
