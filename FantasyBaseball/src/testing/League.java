@@ -29,4 +29,9 @@ public class League {
     public ArrayList<Team> getTeams() {
         return teams;
     }
+
+    public void setTeams(ArrayList<Team> teams)
+    {
+        this.teams = teams;
+    }
 }
