@@ -59,6 +59,10 @@ public class Main {
             } else if(arguments[0].equalsIgnoreCase("help")){
                 System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
                         "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tHelp\n\tQuit");
+            } else if(arguments[0].equalsIgnoreCase("EVALFUN")){
+                System.out.println(arguments[1]);
+            } else if(arguments[0].equalsIgnoreCase("PVALFUN")){
+                System.out.println(arguments[1]);
             } else {
                 System.out.println("Invalid command\n");
             }
