@@ -203,7 +203,8 @@ public class DataBase {
     public void getPlayer(String name, Team team) {
         for(NonPitcher player : allNonPitchers) {
             if(player.getName().equalsIgnoreCase(name)) {
-                if(draftedNPs.contains(player)) {
+                //if(draftedNPs.contains(player)) {
+                if(draftedNPs.contains(name)) {//small fix here.
                     System.out.println(player.getName() + " has already been drafted.\n");
                     return;
                 }
