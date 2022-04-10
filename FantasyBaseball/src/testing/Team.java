@@ -1,12 +1,14 @@
 package testing;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Team {
-    private ArrayList<Players> team = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
+
+public class Team implements Serializable {
+    private ArrayList<Players> team = new ArrayList<>();// here
 
     private String name;
 
@@ -26,9 +28,9 @@ public class Team {
 
     //Checks to see if a player has already been drafted for that spot, if not, it drafts a player.
     public boolean addPlayer(Players teammate) {
-        switch(teammate.getPosition()) {
+        switch (teammate.getPosition()) {
             case "C":
-                if(catcherC == 0) {
+                if (catcherC == 0) {
                     System.out.println("Max Catchers reached");
                     return false;
                 }
@@ -37,7 +39,7 @@ public class Team {
                 catcherC--;
                 return true;
             case "1B":
-                if(firstBaseC == 0) {
+                if (firstBaseC == 0) {
                     System.out.println("Max first basemen reached");
                     return false;
                 }
@@ -46,7 +48,7 @@ public class Team {
                 firstBaseC--;
                 return true;
             case "2B":
-                if(secondBaseC == 0) {
+                if (secondBaseC == 0) {
                     System.out.println("Max second basemen reached");
                     return false;
                 }
@@ -55,7 +57,7 @@ public class Team {
                 secondBaseC--;
                 return true;
             case "3B":
-                if(thirdBaseC == 0) {
+                if (thirdBaseC == 0) {
                     System.out.println("Max third basemen reached");
                     return false;
                 }
@@ -64,7 +66,7 @@ public class Team {
                 thirdBaseC--;
                 return true;
             case "SS":
-                if(SSC == 0) {
+                if (SSC == 0) {
                     System.out.println("Max Short Stops reached");
                     return false;
                 }
@@ -73,7 +75,7 @@ public class Team {
                 SSC--;
                 return true;
             case "LF":
-                if(leftFieldC == 0) {
+                if (leftFieldC == 0) {
                     System.out.println("Max Left Fielders reached");
                     return false;
                 }
@@ -82,7 +84,7 @@ public class Team {
                 leftFieldC--;
                 return true;
             case "CF":
-                if(centerFieldC == 0) {
+                if (centerFieldC == 0) {
                     System.out.println("Max Center Fielders reached");
                     return false;
                 }
@@ -91,7 +93,7 @@ public class Team {
                 centerFieldC--;
                 return true;
             case "RF":
-                if(rightFieldC == 0) {
+                if (rightFieldC == 0) {
                     System.out.println("Max Right Fielders reached");
                     return false;
                 }
@@ -100,12 +102,12 @@ public class Team {
                 rightFieldC--;
                 return true;
             case "P":
-                if(pitcherC == 0) {
+                if (pitcherC == 0) {
                     System.out.println("Max Pitchers reached");
                     return false;
                 }
 
-                switch(pitcherC) {
+                switch (pitcherC) {
                     case 5:
                         teammate.setPosition("P1");
                         teammate.assignWeight(teammate.getPosition());
@@ -158,7 +160,7 @@ public class Team {
         ArrayList<Players> temp = team;
         Collections.sort(temp);
 
-        for(Players p : temp) {
+        for (Players p : temp) {
             System.out.println(p.getPosition() + " " + p.getName());
         }
 
@@ -167,67 +169,68 @@ public class Team {
 
     //Main method for POVERALL command
     public void displayPitch(ArrayList<Pitcher> pitchers) {
-        if(this.getPitcherC() == 0) {
+        if (this.getPitcherC() == 0) {
             System.out.println("You already drafted 5 Pitchers.");
             return;
         }
-        for(Pitcher player : pitchers) {
+        for (Pitcher player : pitchers) {
             System.out.println(player.toString());
         }
     }
+
     //Single argument OVERALL Method
     //Prints all players of requested position in order of rank
     public void displayPos(String position, ArrayList<NonPitcher> allNonPitchers) {
-        for(NonPitcher player : allNonPitchers) {
-            if(this.isDrafted(position)) {
+        for (NonPitcher player : allNonPitchers) {
+            if (this.isDrafted(position)) {
                 System.out.println("You already drafted the maximum amount of " + position);
                 return;
             }
-            if(player.getPosition().equals(position))
+            if (player.getPosition().equals(position))
                 System.out.println(player.toString());
         }
     }
 
     //No arguments OVERALL method
     public void displayPos(ArrayList<NonPitcher> allNonPitchers) {
-        for(NonPitcher player : allNonPitchers) {
-            if(player.getPosition().equals("C")) {
-                if(catcherC == 0)
+        for (NonPitcher player : allNonPitchers) {
+            if (player.getPosition().equals("C")) {
+                if (catcherC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
-            } else if(player.getPosition().equals("1B")) {
-                if(firstBaseC == 0)
+            } else if (player.getPosition().equals("1B")) {
+                if (firstBaseC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
-            } else if(player.getPosition().equals("2B")) {
-                if(secondBaseC == 0)
+            } else if (player.getPosition().equals("2B")) {
+                if (secondBaseC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
-            } else if(player.getPosition().equals("3B")) {
-                if(thirdBaseC == 0)
+            } else if (player.getPosition().equals("3B")) {
+                if (thirdBaseC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
-            } else if(player.getPosition().equals("SS")) {
-                if(SSC == 0)
+            } else if (player.getPosition().equals("SS")) {
+                if (SSC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
-            } else if(player.getPosition().equals("LF")) {
-                if(leftFieldC == 0)
+            } else if (player.getPosition().equals("LF")) {
+                if (leftFieldC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
-            } else if(player.getPosition().equals("RF")) {
-                if(rightFieldC == 0)
+            } else if (player.getPosition().equals("RF")) {
+                if (rightFieldC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
-            } else if(player.getPosition().equals("CF")) {
-                if(centerFieldC == 0)
+            } else if (player.getPosition().equals("CF")) {
+                if (centerFieldC == 0)
                     continue;
                 System.out.println(player.toString());
                 continue;
@@ -272,43 +275,47 @@ public class Team {
         return pitcherC;
     }
 
+    public void setTeam(ArrayList<Players> team) {
+        this.team = team;
+    }
+
     //Checks to see if a player has been drafted by checking if their position variables are set to 0
     public boolean isDrafted(String position) {
-        switch(position) {
+        switch (position) {
             case "C":
-                if(catcherC == 0)
+                if (catcherC == 0)
                     return true;
                 return false;
             case "1B":
-                if(firstBaseC == 0)
+                if (firstBaseC == 0)
                     return true;
                 return false;
             case "2B":
-                if(secondBaseC == 0)
+                if (secondBaseC == 0)
                     return true;
                 return false;
             case "3B":
-                if(thirdBaseC == 0)
+                if (thirdBaseC == 0)
                     return true;
                 return false;
             case "SS":
-                if(SSC == 0)
+                if (SSC == 0)
                     return true;
                 return false;
             case "LF":
-                if(leftFieldC == 0)
+                if (leftFieldC == 0)
                     return true;
                 return false;
             case "RF":
-                if(rightFieldC == 0)
+                if (rightFieldC == 0)
                     return true;
                 return false;
             case "CF":
-                if(centerFieldC == 0)
+                if (centerFieldC == 0)
                     return true;
                 return false;
             case "P":
-                if(pitcherC == 0)
+                if (pitcherC == 0)
                     return true;
                 return false;
             default:
@@ -316,3 +323,4 @@ public class Team {
         }
     }
 }
+
