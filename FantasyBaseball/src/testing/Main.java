@@ -76,7 +76,8 @@ public class Main {
         System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
                 "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tHelp\n\tQuit");
     }
-
+    //Credit to the Integerset provided resources:https://howtodoinjava.com/java/collections/arraylist/serialize-deserialize-arraylist/
+    //Serialize teams and save them to file. That includes its sub indexes
     private static void onSerializeTeams(League teams, ArrayList<Team> listTeams)
     {
         try
