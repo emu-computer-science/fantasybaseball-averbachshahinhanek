@@ -15,6 +15,7 @@ public class Pitcher extends Players{
         this.ip = ip;
     }
 
+    //To String Methods and Getter Methods
     @Override
     public String toString() {
         return this.name + " " + this.team + " " + this.position + " " + this.ip;
@@ -30,6 +31,10 @@ public class Pitcher extends Players{
 
     public String getPosition() {
         return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public double getIp() {
