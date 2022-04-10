@@ -1,6 +1,9 @@
 package testing;
 
-public class Players implements Comparable<Players> {
+import java.io.Serializable;
+
+public class Players implements Comparable<Players>, Serializable
+{
     private String name;
     private String team;
     private String position;

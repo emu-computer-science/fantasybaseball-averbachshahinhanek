@@ -1,6 +1,8 @@
 package testing;
 
-public class NonPitcher extends Players{
+import java.io.Serializable;
+
+public class NonPitcher extends Players implements Serializable{
     private String name;
     private String team;
     private String position;
