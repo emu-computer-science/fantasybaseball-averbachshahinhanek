@@ -7,15 +7,21 @@ public class Pitcher extends Players implements Serializable
     private String name;
     private String team;
     private String position;
-    private double ip;
+    private double era, g, gs, ip, bb, so;
 
     //Only for pitchers
-    public Pitcher(String name, String team, String position, double ip) {
+    public Pitcher(String name, String team, String position, double era, double g,
+                   double gs, double ip, double bb, double so) {
         super(name,team,position);
         this.name = name;
         this.team = team;
         this.position = position;
+        this.era = era;
+        this.g = g;
+        this.gs = gs;
         this.ip = ip;
+        this.bb = bb;
+        this.so = so;
     }
 
     //To String Methods and Getter Methods

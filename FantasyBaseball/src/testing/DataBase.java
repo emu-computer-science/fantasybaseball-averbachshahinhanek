@@ -20,27 +20,30 @@ public class DataBase {
     ArrayList<NonPitcher> rightField = new ArrayList<>();
 
     //These hold all the Non-pitcher and the other holds all the pitchers
-    ArrayList<NonPitcher> allNonPitchers = new ArrayList<>();
-    ArrayList<Pitcher> pitcher = new ArrayList<>();
+    ArrayList<NonPitcher> allNonPitchers = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
+    ArrayList<Pitcher> pitcher = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
 
-    ArrayList<NonPitcher> draftedNPs = new ArrayList<>();
-    ArrayList<Pitcher> draftedP = new ArrayList<>();
+    ArrayList<NonPitcher> draftedNPs = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
+    ArrayList<Pitcher> draftedP = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
 
     public DataBase() {}
 
     public void initializePitcher(File database) throws Exception {
         BufferedReader reader = new BufferedReader(new FileReader(database));
         String data; //Holds contents of a line of the database
-        String[] line = new String[10];
+        String[] line = new String[9];
         int tempC = 0;
         //To store pitcher data
+        reader.readLine(); //Reads first line of the database
         while((data = reader.readLine()) != null) {
             line = data.split(" ");
 
             line[0] = line[0].substring(0,1);
             line[1] = line[1] + ",";
             //Format example: [Last name, first initial, team, position, IP]
-            pitcher.add(new Pitcher((line[1] + " " + line[0]), line[2],"P",Double.parseDouble(line[6])));
+            pitcher.add(new Pitcher((line[1] + " " + line[0]), line[2],"P",Double.parseDouble(line[3]),
+                    Double.parseDouble(line[4]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                    Double.parseDouble(line[7]), Double.parseDouble(line[8])));
         }
         reader.close();
     }
@@ -48,9 +51,10 @@ public class DataBase {
     public void initializeBatters(File database) throws Exception {
         BufferedReader reader = new BufferedReader(new FileReader(database));
         String data; //Holds contents of a line of the database
-        String[] line = new String[20];
+        String[] line = new String[11];
 
         //To store pitcher data
+        reader.readLine(); //Reads first line of database
         while((data = reader.readLine()) != null) {
             //Splits lines based on white space
             line = data.split(" ");
@@ -59,80 +63,61 @@ public class DataBase {
             line[0] = line[0].substring(0,1);
             //Adds a comma to the last name
             line[1] = line[1] + ",";
-            if(line.length - 1 <= 15)
-               allNonPitchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-            else
-                //Format example: [Last name, first initial, position, team, AVG]
-                allNonPitchers.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[16])));
+            //Player: NonPitcher: LastName FirstName Team Position AVG OBP AB SLG SB R H HR
+            allNonPitchers.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                    Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                    Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                    Double.parseDouble(line[7])));
 
-            //line[1] + " " + line[0] is a concatenation of the last name and first initial
-            //line[3] is the players position, line[2] is the players team, and either 0 or line[16] is the AVG stat.
-            //Other stats haven't been read in yet.
-            //AVG is set to 0 if no AVG is found
+            //Player: NonPitcher: LastName FirstName Team Position AVG OBP AB SLG SB R H HR
             switch(line[2]) {
                 case "C":
-                    if(line.length - 1 <= 15) {
-                        catchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                    catchers.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                    catchers.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                            Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                            Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7])));
                     break;
                 case "1B":
-                    if(line.length - 1 <= 15) {
-                        firstBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                    firstBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                    firstBase.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                            Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                            Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7])));
                     break;
                 case "2B":
-                    if(line.length - 1 <= 15) {
-                        secondBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                    secondBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                    secondBase.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                            Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                            Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7])));
                     break;
                 case "3B":
-                    if(line.length - 1 <= 15) {
-                        thirdBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                    thirdBase.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                    thirdBase.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                            Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                            Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7])));
                     break;
                 case "SS":
-                    if(line.length - 1 <= 15) {
-                        SS.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                    SS.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                    SS.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                            Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                            Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7])));
                     break;
                 case "LF":
-                    if(line.length - 1 <= 15) {
-                        leftField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                    leftField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                    leftField.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                            Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                            Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7])));
                     break;
                 case "CF":
-                    if(line.length - 1 <= 15) {
-                        centerField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                   centerField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                   centerField.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                           Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                           Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                           Double.parseDouble(line[7])));
                     break;
                 case "RF":
-                    if(line.length - 1 <= 15) {
-                        rightField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],0));
-                        break;
-                    }
-                    //Format example: [Last name, first initial, team, position, AVG]
-                    rightField.add(new NonPitcher((line[1] + " " + line[0]),line[3],line[2],Double.parseDouble(line[16])));
+                    rightField.add(new NonPitcher((line[1] + " " + line[0]), line[3], line[2], Double.parseDouble(line[9]),
+                            Double.parseDouble(line[10]), Double.parseDouble(line[4]), Double.parseDouble(line[11]),
+                            Double.parseDouble(line[8]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7])));
                     break;
                 default:
                     break;
@@ -208,6 +193,7 @@ public class DataBase {
                     System.out.println(player.getName() + " has already been drafted.\n");
                     return;
                 }
+
                 team.addPlayer(player);
                 draftedNPs.add(player);
                 return;
@@ -216,16 +202,16 @@ public class DataBase {
 
         for(Pitcher player : pitcher) {
             if(player.getName().equalsIgnoreCase(name)) {
-                if(draftedP.contains(player)) {
+                if(draftedP.contains(name)) {
                     System.out.println(player.getName() + " has already been drafted.\n");
                     return;
                 }
+                
                 team.addPlayer(player);
                 draftedP.add(player);
                 return;
             }
         }
-        //TODO NEED TO ADD DRAFTED PLAYERS TO SEPERATE DATABASE TO TEST IF DRAFTED
         System.out.println("Could not locate: " + name + " in the MLB database.\n");
     }
 

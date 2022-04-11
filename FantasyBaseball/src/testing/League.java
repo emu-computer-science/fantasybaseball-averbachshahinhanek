@@ -3,7 +3,7 @@ package testing;
 import java.util.ArrayList;
 
 public class League {
-    private ArrayList<Team> teams = new ArrayList<>();
+    private ArrayList<Team> teams = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
     public League() {}
 
     public void addTeam(String name) {
