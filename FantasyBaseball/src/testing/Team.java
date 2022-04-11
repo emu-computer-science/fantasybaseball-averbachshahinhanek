@@ -1,12 +1,14 @@
 package testing;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Team {
-    private ArrayList<Players> team = new ArrayList<>();
+public class Team implements Serializable
+{
+    private ArrayList<Players> team = new ArrayList<>();// here
     private String name;
 
     private int catcherC = 1;
@@ -269,6 +271,11 @@ public class Team {
 
     public int getPitcherC() {
         return pitcherC;
+    }
+
+    public void setTeam(ArrayList<Players> team)
+    {
+        this.team = team;
     }
 
     //Checks to see if a player has been drafted by checking if their position variables are set to 0
