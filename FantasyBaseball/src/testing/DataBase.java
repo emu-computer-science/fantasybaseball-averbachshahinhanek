@@ -57,7 +57,7 @@ public class DataBase {
         reader.readLine(); //Reads first line of database
         while((data = reader.readLine()) != null) {
             //Splits lines based on white space
-            line = data.split("\t");
+            line = data.split(" ");
 
             //First initial of first name
             line[0] = line[0].substring(0,1);
