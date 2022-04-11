@@ -35,6 +35,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 catcherC--;
                 return true;
@@ -44,6 +45,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 firstBaseC--;
                 return true;
@@ -53,6 +55,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 secondBaseC--;
                 return true;
@@ -62,6 +65,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 thirdBaseC--;
                 return true;
@@ -71,6 +75,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 SSC--;
                 return true;
@@ -80,6 +85,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 leftFieldC--;
                 return true;
@@ -89,6 +95,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 centerFieldC--;
                 return true;
@@ -98,6 +105,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
+                System.out.println("Drafted: " + teammate.toString() + "\n");
                 team.add(teammate);
                 rightFieldC--;
                 return true;
@@ -111,30 +119,35 @@ public class Team implements Serializable {
                     case 5:
                         teammate.setPosition("P1");
                         teammate.assignWeight(teammate.getPosition());
+                        System.out.println("Drafted: " + teammate.toString() + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 4:
                         teammate.setPosition("P2");
                         teammate.assignWeight(teammate.getPosition());
+                        System.out.println("Drafted: " + teammate.toString() + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 3:
                         teammate.setPosition("P3");
                         teammate.assignWeight(teammate.getPosition());
+                        System.out.println("Drafted: " + teammate.toString() + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 2:
                         teammate.setPosition("P4");
                         teammate.assignWeight(teammate.getPosition());
+                        System.out.println("Drafted: " + teammate.toString() + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 1:
                         teammate.setPosition("P5");
                         teammate.assignWeight(teammate.getPosition());
+                        System.out.println("Drafted: " + teammate.toString() + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
