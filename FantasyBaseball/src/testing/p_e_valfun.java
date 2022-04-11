@@ -92,7 +92,7 @@ public class p_e_valfun {
     public static void main(String[] args) {
         ////AVG, OBP, AB, SLG, SB.
         String postfix = "34 * OBP + SLG - SB";
-        evalfunStart(postfix);
+        //evalfunStart(postfix);
         //Node r = expressionTree(postfix);
         //inorder(r);
     }
