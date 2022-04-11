@@ -35,21 +35,20 @@ public class p_e_valfun {
     public static double getValue(String evalFunction) throws FileNotFoundException {
 
 
-        Integer x = 0;
+        int x = 0;
         String line = null;
         String splitBy = " ";
         try
         {
 //parsing a CSV file into BufferedReader class constructor
             BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\Batters.txt"));
-            String line1=null;
-            while ((line1 = reader.readLine()) != null)  //returns a Boolean value
+            while ((line = reader.readLine()) != null)  //returns a Boolean value
             {
-                if (x == 0) {
+                if (x == 0) { //skipping the first line because it has column titles
                     x = x + 1;
                 }
                 else{
-                    String[] playerStat = line1.split(splitBy);
+                    String[] playerStat = line.split(splitBy);
                     System.out.println(playerStat[0]);
                     evalFun(evalFunction,playerStat);
 
