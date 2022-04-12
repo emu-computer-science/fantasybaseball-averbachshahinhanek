@@ -1,13 +1,13 @@
 package testing;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import testing.DataBase;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
+import static org.junit.Assert.*;
 
 public class DataBaseTest
 {
@@ -28,15 +28,20 @@ DataBase dataBase;
     @Test
     public void getPlayer()
     {
+
+        //check if the file is read correctly
+//        assertTrue(dataBase.initializeBatters());
+
+        //changing the file name to see if it it fails
+
+//        assertFalse(dataBase.initializePitcher(pitchersDatabase));
+//        assertFalse(dataBase.initializeBatters(battersDatabase));
+
+        //check if file not fo
         //adding NonPitcher players
         //Abreu, J CWS 1B 0.261
         //Guerrero, V TOR 1B 0.311
-        Path resourceDirectory = Paths.get("src","test","resources");
-        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
-        System.out.println(absolutePath);
-
-        Assert.assertTrue(absolutePath.endsWith("src/test/resources"));
         //adding pitcher
 
         //adding

@@ -10,7 +10,8 @@ public class DataBase {
     //The Database contain these stats in the following order for Hitters:
     //Last Name, First initial, Position, Team, AB, SB, AVG, OBP, SLG
     //Can be found on mlb website
-    private String pitchersDatabase, battersDatabase;
+    private  String pitchersDatabase;
+    private  String battersDatabase;
 
     ArrayList<NonPitcher> catchers = new ArrayList<>();
     ArrayList<NonPitcher> firstBase = new ArrayList<>();
@@ -37,8 +38,7 @@ public class DataBase {
     }
 
     private void initializePitcher() {
-        File database = new File(getPitchersDatabase());
-        try (BufferedReader reader = new BufferedReader(new FileReader(database)))
+        try (BufferedReader reader = new BufferedReader(new FileReader(getPitchersDatabase())))
         {
             String data; //Holds contents of a line of the database
             String[] line = new String[9];
@@ -49,76 +49,77 @@ public class DataBase {
             {
                 line = data.split(" ");
 
-                line[0] = line[0].substring(0, 1);
-                line[1] = line[1] + ",";
-                //Format example: [Last name, first initial, team, position, IP]
-                pitcher.add(new Pitcher((line[1] + " " + line[0]), line[2], "P", Double.parseDouble(line[3]),
-                        Double.parseDouble(line[4]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
-                        Double.parseDouble(line[7]), Double.parseDouble(line[8])));
+                    line[0] = line[0].substring(0, 1);
+                    line[1] = line[1] + ",";
+                    //Format example: [Last name, first initial, team, position, IP]
+                    pitcher.add(new Pitcher((line[1] + " " + line[0]), line[2], "P", Double.parseDouble(line[3]),
+                            Double.parseDouble(line[4]), Double.parseDouble(line[5]), Double.parseDouble(line[6]),
+                            Double.parseDouble(line[7]), Double.parseDouble(line[8])));
+                }
+            } catch (IOException e)
+            {
+                System.out.println("Error reading the file");
             }
-        } catch (IOException e)
-        {
-            System.out.println("File not found");
-        }
+
     }
 
+    //pubic for junit testing
     private void initializeBatters()  {
-        File database = new File(getBattersDatabase());
-        try (BufferedReader reader = new BufferedReader(new FileReader(database)))
+        try (BufferedReader reader = new BufferedReader(new FileReader(getBattersDatabase())))
         {
             String data; //Holds contents of a line of the database
             String[] line = new String[11];
 
-            //To store pitcher data
-            reader.readLine(); //Reads first line of database
-            while ((data = reader.readLine()) != null)
-            {
-                //Splits lines based on white space
-                line = data.split(" ");
-
-                //First initial of first name
-                line[0] = line[0].substring(0, 1);
-                //Adds a comma to the last name
-                line[1] = line[1] + ",";
-                //Player: NonPitcher: LastName FirstName Team Position AVG OBP AB SLG SB R H HR
-                nonPitcher(line, allNonPitchers);
-
-                //Player: NonPitcher: LastName FirstName Team Position AVG OBP AB SLG SB R H HR
-                switch (line[2])
+                //To store pitcher data
+                reader.readLine(); //Reads first line of database
+                while ((data = reader.readLine()) != null)
                 {
-                    case "C":
-                        nonPitcher(line, catchers);
-                        break;
-                    case "1B":
-                        nonPitcher(line, firstBase);
-                        break;
-                    case "2B":
-                        nonPitcher(line, secondBase);
-                        break;
-                    case "3B":
-                        nonPitcher(line, thirdBase);
-                        break;
-                    case "SS": //none pitcher?
-                        nonPitcher(line,shortStop);
-                        break;
-                    case "LF":
-                        nonPitcher(line, leftField);
-                        break;
-                    case "CF":
-                        nonPitcher(line, centerField);
-                        break;
-                    case "RF":
-                        nonPitcher(line, rightField);
-                        break;
-                    default:
-                        break;
+                    //Splits lines based on white space
+                    line = data.split(" ");
+
+                    //First initial of first name
+                    line[0] = line[0].substring(0, 1);
+                    //Adds a comma to the last name
+                    line[1] = line[1] + ",";
+                    //Player: NonPitcher: LastName FirstName Team Position AVG OBP AB SLG SB R H HR
+                    nonPitcher(line, allNonPitchers);
+
+                    //Player: NonPitcher: LastName FirstName Team Position AVG OBP AB SLG SB R H HR
+                    switch (line[2])
+                    {
+                        case "C":
+                            nonPitcher(line, catchers);
+                            break;
+                        case "1B":
+                            nonPitcher(line, firstBase);
+                            break;
+                        case "2B":
+                            nonPitcher(line, secondBase);
+                            break;
+                        case "3B":
+                            nonPitcher(line, thirdBase);
+                            break;
+                        case "SS": //none pitcher?
+                            nonPitcher(line, shortStop);
+                            break;
+                        case "LF":
+                            nonPitcher(line, leftField);
+                            break;
+                        case "CF":
+                            nonPitcher(line, centerField);
+                            break;
+                        case "RF":
+                            nonPitcher(line, rightField);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+                reader.close();
+            } catch (IOException e)
+            {
+                System.out.println("Error reading the file");
             }
-            reader.close();
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     //this method will handle the repeated code we had before
@@ -223,6 +224,16 @@ public class DataBase {
     public String getBattersDatabase()
     {
         return battersDatabase;
+    }
+
+    public void setPitchersDatabase(String pitchersDatabase)
+    {
+        this.pitchersDatabase = pitchersDatabase;
+    }
+
+    public void setBattersDatabase(String battersDatabase)
+    {
+        this.battersDatabase = battersDatabase;
     }
 
     public void display(String position) {
