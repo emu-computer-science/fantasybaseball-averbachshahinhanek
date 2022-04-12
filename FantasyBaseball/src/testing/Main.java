@@ -53,17 +53,15 @@ public class Main {
                 mlb.getTeam(0).displayPitch(db.getPitcher());
             } else if(arguments[0].equalsIgnoreCase("TEAM") && arguments.length - 1 == 1 && arguments.length - 1 != 0){
                 mlb.getTeam(arguments[1]).team(); //Prints out team in order of position
-            } else if (arguments[0].equalsIgnoreCase("STARS") && arguments.length - 1 < 2) {
-                mlb.getTeam(arguments[1]).stars(); //Executes STARS method
             } else if (arguments[0].equalsIgnoreCase("Quit")) { //Exits the Program
                 System.out.println("Thank you for using our draft system.\nGoodbye!");
                 break;
             } else if(arguments[0].equalsIgnoreCase("help")){
                 help();
             } else if(arguments[0].equalsIgnoreCase("EVALFUN")){
-                System.out.println(arguments[1]);
+                p_e_valfun.getEvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("PVALFUN")){
-                System.out.println(arguments[1]);
+                p_e_valfun.getPvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("save")){
                 onSerializeTeams(mlb, mlb.getTeams());
             } else if(arguments[0].equalsIgnoreCase("restore")){
@@ -76,7 +74,7 @@ public class Main {
 
     static void help(){
         System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
-                "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tSTARS [team name]\n\tSAVE\n\tRESTORE\n\tHelp\n\tQuit");
+                "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tSAVE\n\tRESTORE\n\tHelp\n\tQuit");
     }
     //Credit to the Integerset provided resources:https://howtodoinjava.com/java/collections/arraylist/serialize-deserialize-arraylist/
     //Serialize teams and save them to file. That includes its sub indexes
