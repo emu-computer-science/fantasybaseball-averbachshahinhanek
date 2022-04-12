@@ -26,9 +26,9 @@ public class Main {
 
         //scan.nextLine();
         //Creation of databases
-        DataBase db = new DataBase();
-        db.initializePitcher(new File("Pitchers.txt"));
-        db.initializeBatters(new File("Batters.txt"));
+        DataBase db = new DataBase("Pitchers.txt", "Batters.txt");
+//        db.initializePitcher(new File("Pitchers.txt"));
+//        db.initializeBatters(new File("Batters.txt"));
         help();
 
         while(true) {

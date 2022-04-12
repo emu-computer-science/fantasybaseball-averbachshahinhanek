@@ -9,6 +9,7 @@ public class DataBase {
     //The Database contain these stats in the following order for Hitters:
     //Last Name, First initial, Position, Team, AB, SB, AVG, OBP, SLG
     //Can be found on mlb website
+    private String pitchersDatabase, battersDatabase;
 
     ArrayList<NonPitcher> catchers = new ArrayList<>();
     ArrayList<NonPitcher> firstBase = new ArrayList<>();
@@ -26,9 +27,27 @@ public class DataBase {
     ArrayList<NonPitcher> draftedNPs = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
     ArrayList<Pitcher> draftedP = new ArrayList<>(); //TODO SAVE THIS ARRAY FOR THE SAVE COMMAND AND WHEN RESTORING, RESTORE INTO THIS ARRAY
 
-    public DataBase() {}
+    public DataBase(String pitchersDatabase, String battersDatabase)
+    {
+        this.pitchersDatabase = pitchersDatabase;
+        this.battersDatabase = battersDatabase;
+        setUpDatabase();
 
-    public void initializePitcher(File database) throws Exception {
+    }
+
+
+    private void setUpDatabase(){
+        try
+        {
+            initializePitcher();
+            initializeBatters();
+        } catch (Exception e)
+        {
+            System.out.println("Error getting the database files");
+        }
+    }
+    private void initializePitcher() throws Exception {
+        File database = new File(getPitchersDatabase());
         BufferedReader reader = new BufferedReader(new FileReader(database));
         String data; //Holds contents of a line of the database
         String[] line = new String[9];
@@ -48,7 +67,8 @@ public class DataBase {
         reader.close();
     }
 
-    public void initializeBatters(File database) throws Exception {
+    private void initializeBatters() throws Exception {
+        File database = new File(getBattersDatabase());
         BufferedReader reader = new BufferedReader(new FileReader(database));
         String data; //Holds contents of a line of the database
         String[] line = new String[11];
@@ -264,5 +284,15 @@ public class DataBase {
 
     public ArrayList<Pitcher> getPitcher() {
         return pitcher;
+    }
+
+    public String getPitchersDatabase()
+    {
+        return pitchersDatabase;
+    }
+
+    public String getBattersDatabase()
+    {
+        return battersDatabase;
     }
 }
