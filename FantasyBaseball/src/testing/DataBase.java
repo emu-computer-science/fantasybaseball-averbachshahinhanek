@@ -185,18 +185,20 @@ public class DataBase {
 
     //Looks for provided player through both large databases and drafts them
     //into provided team.
-    public void getPlayer(String name, Team team) {
+    //public void getPlayer(String name, Team team) {
+    public String getPlayer(String name, Team team) {
         for(NonPitcher player : allNonPitchers) {
             if(player.getName().equalsIgnoreCase(name)) {
                 //if(draftedNPs.contains(player)) {
                 if(draftedNPs.contains(name)) {//small fix here.
                     System.out.println(player.getName() + " has already been drafted.\n");
-                    return;
+                    return "NonPitcher player Already Drafted";
                 }
 
                 team.addPlayer(player);
                 draftedNPs.add(player);
-                return;
+                System.out.println("NonPitcher " +name+" is added.");
+                return "NonPitcher player is added";
             }
         }
 
@@ -204,15 +206,17 @@ public class DataBase {
             if(player.getName().equalsIgnoreCase(name)) {
                 if(draftedP.contains(name)) {
                     System.out.println(player.getName() + " has already been drafted.\n");
-                    return;
+                    return "Pitcher is already drafted";
                 }
                 
                 team.addPlayer(player);
                 draftedP.add(player);
-                return;
+                System.out.println("Pitcher " +name+" is added.");
+                return "Pitcher player is added" ;
             }
         }
         System.out.println("Could not locate: " + name + " in the MLB database.\n");
+        return "Player not found";
     }
 
     public void print() {
