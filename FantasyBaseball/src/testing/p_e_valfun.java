@@ -61,7 +61,7 @@ public class p_e_valfun {
         try {
 //parsing a CSV file into BufferedReader class constructor
             BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\Batters.txt")); // Path of DB File
-            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\evalfun.csv");
+            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\evalfun.csv"); // Path to create a new evalfun csv file
             writer.write("FIRST LAST POSITION TEAM AB R H HR SB AVG OBP SLG EVALFUN\n");
 
             while ((line = reader.readLine()) != null)  //returns a Boolean value
@@ -104,7 +104,7 @@ public class p_e_valfun {
         try {
 //parsing a CSV file into BufferedReader class constructor
             BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\Pitchers.txt")); // Path of DB File
-            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\pvalfun.csv");
+            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\pvalfun.csv");// Path to create a new pvalfun csv file
             writer.write("PLAYER1 PLAYER2 TEAM ERA G GS IP HB BB SO PVALFUN\n");
 
             while ((line = reader.readLine()) != null)  //returns a Boolean value
