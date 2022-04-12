@@ -1,17 +1,20 @@
 package testing;
 
 import hashmapversion.Teams;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import java.io.*;
 import java.util.*;
 
 public class Main {
+
+
     private static String[] arguments = new String[5];
     private static League mlb = new League();
 
     public static void main(String[] args) throws Exception {
+
+
         //Implements script manager
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("JavaScript");
@@ -59,9 +62,9 @@ public class Main {
             } else if(arguments[0].equalsIgnoreCase("help")){
                 help();
             } else if(arguments[0].equalsIgnoreCase("EVALFUN")){
-                System.out.println(arguments[1]);
+                p_e_valfun.getEvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("PVALFUN")){
-                System.out.println(arguments[1]);
+                p_e_valfun.getPvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("save")){
                 onSerializeTeams(mlb, mlb.getTeams());
             } else if(arguments[0].equalsIgnoreCase("restore")){
@@ -74,7 +77,7 @@ public class Main {
 
     static void help(){
         System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
-                "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tSAVE\n\tRESTORE\n\tHelp\n\tQuit");
+                "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tEVALFUN [Function]\n\tPVALFUN [Function]\n\tTEAM [team name]\n\tSAVE\n\tRESTORE\n\tHelp\n\tQuit");
     }
     //Credit to the Integerset provided resources:https://howtodoinjava.com/java/collections/arraylist/serialize-deserialize-arraylist/
     //Serialize teams and save them to file. That includes its sub indexes

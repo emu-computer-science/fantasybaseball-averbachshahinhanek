@@ -13,8 +13,26 @@ import java.util.stream.Collectors;
 
 
 ////PLAYER1 PLAYER2 TEAM ERA G GS IP HB BB SO
-
+//G, GS, ERA, IP, BB
 public class p_e_valfun {
+
+    public static double pvalFun(String evalExp, ArrayList<String> playerStat) throws UnparsableExpressionException, UnknownFunctionException, FileNotFoundException {
+
+
+        Calculable calc = new ExpressionBuilder(evalExp)
+                .withVariableNames("G", "GS", "ERA", "IP", "BB")
+                .build();
+        calc.setVariable("G", Double.parseDouble(playerStat.get(5)));; //<-- Here is where we would call the function to get the player AVG
+        calc.setVariable("GS", Double.parseDouble(playerStat.get(6)));
+        calc.setVariable("ERA", Double.parseDouble((playerStat.get(4))));
+        calc.setVariable("IP", Double.parseDouble(playerStat.get(7)));
+        calc.setVariable("BB", Double.parseDouble(playerStat.get(9)));
+        double calculation = calc.calculate();
+
+        System.out.println("\nPVALFUN: " + calculation);
+
+        return calc.calculate();
+    }
 
     public static double evalFun(String evalExp, ArrayList<String> playerStat) throws UnparsableExpressionException, UnknownFunctionException, FileNotFoundException {
 
@@ -28,12 +46,12 @@ public class p_e_valfun {
         calc.setVariable("SLG", Double.parseDouble(playerStat.get(11)));
         calc.setVariable("SB", Double.parseDouble(playerStat.get(8)));
 
-        Double calculation = calc.calculate();
-        System.out.println(calculation);
+        double calculation = calc.calculate();
+        System.out.println("\nEVALFUN: " + calculation);
         return(calculation);
     }
 
-    public static void getValue(String evalFunction) throws IOException {
+    public static void getEvalFun(String evalFunction) throws IOException {
 
 
         int x = 0;
@@ -54,9 +72,52 @@ public class p_e_valfun {
                     String[] strSplit = line.split(splitBy);
                     ArrayList<String> playerStat = new ArrayList<String>(
                             Arrays.asList(strSplit));
-                    System.out.println(playerStat);
+                    //System.out.println(playerStat);
 
                     Double result = evalFun(evalFunction, playerStat);
+
+                    playerStat.add(String.valueOf(result));
+                    System.out.println(playerStat);
+
+                    String collect = String.join(" ", playerStat);
+                    writer.write(collect+"\n");
+
+
+                }
+            }
+        } catch (IOException | UnparsableExpressionException | UnknownFunctionException e) {
+            e.printStackTrace();
+
+        }
+        assert writer != null;
+        writer.close();
+    }
+
+
+    public static void getPvalFun(String pvalFunction) throws IOException {
+
+
+        int x = 0;
+        String line = null;
+        String splitBy = " ";
+        FileWriter writer = null;
+        try {
+//parsing a CSV file into BufferedReader class constructor
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\Pitchers.txt")); // Path of DB File
+            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\pvalfun.csv");
+            writer.write("PLAYER1 PLAYER2 TEAM ERA G GS IP HB BB SO PVALFUN\n");
+
+            while ((line = reader.readLine()) != null)  //returns a Boolean value
+            {
+                if (x == 0) { //skipping the first line because it has column titles
+                    x = x + 1;
+                } else {
+                    String[] strSplit = line.split(splitBy);
+                    ArrayList<String> playerStat = new ArrayList<String>(
+                            Arrays.asList(strSplit));
+                    //System.out.println(playerStat);
+
+                    Double result = pvalFun(pvalFunction, playerStat);
 
                     playerStat.add(String.valueOf(result));
                     System.out.println(playerStat);
@@ -80,7 +141,10 @@ public class p_e_valfun {
 
     public static void main(String[] args) throws ScriptException, UnparsableExpressionException, UnknownFunctionException, IOException {
 
-        getValue("(SLG + SB) - 2");
+        //getEvalFun("(SLG + SB) - 2");
+
+        //G, GS, ERA, IP, BB
+        getPvalFun(("(GS + IP) - 2"));
         String sTest = "SLG + SB - 2";
         //evalfun(sTest);
 
