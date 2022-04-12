@@ -103,8 +103,8 @@ public class p_e_valfun {
         FileWriter writer = null;
         try {
 //parsing a CSV file into BufferedReader class constructor
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\Pitchers.txt")); // Path of DB File
-            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\pvalfun.csv");
+            BufferedReader reader = new BufferedReader(new FileReader("Pitchers.txt")); // Path of DB File
+            writer = new FileWriter("pvalfun.csv");
             writer.write("PLAYER1 PLAYER2 TEAM ERA G GS IP HB BB SO PVALFUN\n");
 
             while ((line = reader.readLine()) != null)  //returns a Boolean value
