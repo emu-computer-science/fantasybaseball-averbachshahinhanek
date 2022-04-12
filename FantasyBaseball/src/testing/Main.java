@@ -63,9 +63,13 @@ public class Main {
             } else if(arguments[0].equalsIgnoreCase("PVALFUN")){
                 p_e_valfun.getPvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("save")){
-                onSerializeTeams(mlb, mlb.getTeams());
+                System.out.print("Enter a file name: ");
+                input = reader.readLine();;
+                onSerializeTeams(input, mlb.getTeams());
             } else if(arguments[0].equalsIgnoreCase("restore")){
-                onDeserializeTeams();
+                System.out.print("Enter the name of existing file: ");
+                input = reader.readLine();;
+                onDeserializeTeams(input);
             }else {
                 System.out.println("Invalid command\n");
             }
@@ -78,11 +82,11 @@ public class Main {
     }
     //Credit to the Integerset provided resources:https://howtodoinjava.com/java/collections/arraylist/serialize-deserialize-arraylist/
     //Serialize teams and save them to file. That includes its sub indexes
-    private static void onSerializeTeams(League teams, ArrayList<Team> listTeams)
+    private static void onSerializeTeams(String filename, ArrayList<Team> listTeams)
     {
         try
         {
-            FileOutputStream fos = new FileOutputStream("teams.txt");
+            FileOutputStream fos = new FileOutputStream(filename);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(listTeams);
             oos.close();
@@ -96,11 +100,11 @@ public class Main {
 
     //Credit to the Integerset provided resources:https://howtodoinjava.com/java/collections/arraylist/serialize-deserialize-arraylist/
     //get the data from the text file and set it to Teams
-    private static void onDeserializeTeams()
+    private static void onDeserializeTeams(String filename)
     {
         try
         {
-            FileInputStream fis = new FileInputStream("teams.txt");
+            FileInputStream fis = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             mlb.setTeams((ArrayList) ois.readObject());
