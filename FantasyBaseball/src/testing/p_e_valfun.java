@@ -183,13 +183,21 @@ public class p_e_valfun {
 
     public static void fileReplace(String fileToRead, String fileToReplace) throws IOException {
         File cfgFilePath = new File(fileToRead) ;
-
         File strTarget = new File(fileToReplace);
+
         Path from = cfgFilePath.toPath(); //convert from File to Path
-        Path to = Paths.get(String.valueOf(strTarget)); //convert from String to Path
+        Path to = strTarget.toPath(); //convert from String to Path
         Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
 
+        
 
+        close();
+
+
+
+    }
+
+    private static void close() {
     }
 
 
