@@ -37,6 +37,7 @@ public class p_e_valfun {
     public static double evalFun(String evalExp, ArrayList<String> playerStat) throws UnparsableExpressionException, UnknownFunctionException, FileNotFoundException {
 
 
+        
         Calculable calc = new ExpressionBuilder(evalExp)
                 .withVariableNames("AVG", "OBP", "AB", "SLG", "SB")
                 .build();
