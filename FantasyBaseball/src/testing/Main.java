@@ -1,5 +1,6 @@
 package testing;
 
+
 import hashmapversion.Teams;
 
 
@@ -49,6 +50,22 @@ public class Main {
 
             } else if(arguments[0].equalsIgnoreCase("OVERALL") && arguments.length - 1 < 1) {
                 mlb.getTeam(0).displayPos(db.getAllNonPitchers());
+            } else if(arguments[0].equalsIgnoreCase("OVERALL") && arguments[1].equals("EVALFUN")) {
+                BufferedReader br = new BufferedReader(new FileReader("Batters.txt"));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+
+
+
+            }else if(arguments[0].equalsIgnoreCase("OVERALL") && arguments[1].equals("PVALFUN")) {
+                BufferedReader br = new BufferedReader(new FileReader("Pitchers.txt"));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+
             } else if(arguments[0].equalsIgnoreCase("OVERALL")) {
                 mlb.getTeam(0).displayPos(arguments[1],db.getAllNonPitchers()); //Client team
             } else if(arguments[0].equalsIgnoreCase("POVERALL")) {
@@ -61,9 +78,9 @@ public class Main {
             } else if(arguments[0].equalsIgnoreCase("help")){
                 help();
             } else if(arguments[0].equalsIgnoreCase("EVALFUN")){
-                p_e_valfun.getEvalFun(arguments[1]);
+                peValfun.getEvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("PVALFUN")){
-                p_e_valfun.getPvalFun(arguments[1]);
+                peValfun.getPvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("save")){
                 System.out.print("Enter a file name: ");
                 input = reader.readLine();;
