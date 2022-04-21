@@ -1,6 +1,5 @@
 package testing;
 
-import hashmapversion.Teams;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import java.io.*;
@@ -78,9 +77,9 @@ public class Main {
             } else if(arguments[0].equalsIgnoreCase("help")){
                 help();
             } else if(arguments[0].equalsIgnoreCase("EVALFUN")){
-                p_e_valfun.getEvalFun(arguments[1]);
+                peValfun.getEvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("PVALFUN")){
-                p_e_valfun.getPvalFun(arguments[1]);
+                peValfun.getPvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("save")){
                 onSerializeTeams(mlb, mlb.getTeams());
             } else if(arguments[0].equalsIgnoreCase("restore")){

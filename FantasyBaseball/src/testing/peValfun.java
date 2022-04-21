@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.script.ScriptException;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -15,7 +14,7 @@ import java.util.stream.Collectors;
 
 ////PLAYER1 PLAYER2 TEAM ERA G GS IP HB BB SO
 //G, GS, ERA, IP, BB
-public class p_e_valfun {
+public class peValfun {
 
     public static double pvalFun(String evalExp, ArrayList<String> playerStat) throws UnparsableExpressionException, UnknownFunctionException, FileNotFoundException {
 
