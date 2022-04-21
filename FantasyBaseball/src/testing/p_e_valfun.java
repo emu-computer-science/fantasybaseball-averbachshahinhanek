@@ -6,6 +6,10 @@ import de.congrace.exp4j.UnparsableExpressionException;
 
 import javax.script.ScriptException;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -60,8 +64,8 @@ public class p_e_valfun {
         FileWriter writer = null;
         try {
 //parsing a CSV file into BufferedReader class constructor
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\Batters.txt")); // Path of DB File
-            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\evalfun.csv"); // Path to create a new evalfun csv file
+            BufferedReader reader = new BufferedReader(new FileReader("Batters.txt")); // Path of DB File
+            writer = new FileWriter("BattersTemp.txt"); // Path to create a new evalfun csv file
             writer.write("FIRST LAST POSITION TEAM AB R H HR SB AVG OBP SLG EVALFUN\n");
 
             while ((line = reader.readLine()) != null)  //returns a Boolean value
@@ -85,12 +89,19 @@ public class p_e_valfun {
 
                 }
             }
+            reader.close();
         } catch (IOException | UnparsableExpressionException | UnknownFunctionException e) {
             e.printStackTrace();
 
         }
         assert writer != null;
         writer.close();
+
+        File cfgFilePath = new File("BattersTemp.txt") ;
+        File strTarget = new File("Batters.txt");
+        Path from = cfgFilePath.toPath(); //convert from File to Path
+        Path to = Paths.get(String.valueOf(strTarget)); //convert from String to Path
+        Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
     }
 
 
@@ -103,8 +114,8 @@ public class p_e_valfun {
         FileWriter writer = null;
         try {
 //parsing a CSV file into BufferedReader class constructor
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\Pitchers.txt")); // Path of DB File
-            writer = new FileWriter("C:\\Users\\aladdin\\Desktop\\fantasybaseball-averbachshahinhanek\\pvalfun.csv");// Path to create a new pvalfun csv file
+            BufferedReader reader = new BufferedReader(new FileReader("Pitchers.txt")); // Path of DB File
+            writer = new FileWriter("PitchersTemp.txt");// Path to create a new pvalfun csv file
             writer.write("PLAYER1 PLAYER2 TEAM ERA G GS IP HB BB SO PVALFUN\n");
 
             while ((line = reader.readLine()) != null)  //returns a Boolean value
@@ -128,12 +139,25 @@ public class p_e_valfun {
 
                 }
             }
+            reader.close();
+
+
+
+
         } catch (IOException | UnparsableExpressionException | UnknownFunctionException e) {
             e.printStackTrace();
 
         }
         assert writer != null;
         writer.close();
+        File cfgFilePath = new File("PitchersTemp.txt") ;
+        File strTarget = new File("Pitchers.txt");
+        Path from = cfgFilePath.toPath(); //convert from File to Path
+        Path to = Paths.get(String.valueOf(strTarget)); //convert from String to Path
+        Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
+
+
+
     }
 
 
