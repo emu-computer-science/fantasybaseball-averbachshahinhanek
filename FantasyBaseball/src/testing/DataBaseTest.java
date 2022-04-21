@@ -1,26 +1,30 @@
 package testing;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import testing.DataBase;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DataBaseTest
 {
 DataBase dataBase;
     ArrayList<Pitcher> pitcher;
+    private Path workingDir;
     @Before
     public void setUp() throws Exception
     {
-        dataBase = new DataBase("Pitchers.txt", "Batters.txt");
+        dataBase = new DataBase("/Pitchers.txt", "Batters.txt");
         pitcher = new ArrayList<>();
     }
 
@@ -29,11 +33,30 @@ DataBase dataBase;
     {
     }
 
+    @Before
+    public void init() {
+        this.workingDir = Path.of("", "src/test/resources");
+    }
+
+
+
+    @Test
+    public void testReadFileWithClassLoader(){
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        File file = new File(classLoader.getResource(dataBase.getPitchersDatabase()).getFile());
+        Assert.assertTrue(file.exists());
+
+    }
+
 @Test
-public void getInitializePitcher()
-{
-    dataBase.setPitchersDatabase("Pitchers.txt");
-    try (BufferedReader reader = new BufferedReader(new FileReader(dataBase.getPitchersDatabase())))
+public void getInitializePitcher() throws IOException {
+    //would not allow to read from file
+    Path file = this.workingDir.resolve(dataBase.getPitchersDatabase());
+    String content = Files.readString(file);
+    assertThat(content, is("duke"));
+
+
+    try (BufferedReader reader = new BufferedReader(new FileReader("absolutePath")))
     {
         String data; //Holds contents of a line of the database
         String[] line = new String[9];
@@ -60,29 +83,12 @@ public void getInitializePitcher()
     @Test
     public void getPlayer()
     {
-
-        //check if the file is read correctly
-//        assertTrue(dataBase.initializeBatters());
-
-        //changing the file name to see if it it fails
-
-//        assertFalse(dataBase.initializePitcher(pitchersDatabase));
-//        assertFalse(dataBase.initializeBatters(battersDatabase));
-
-        //check if file not fo
-        //adding NonPitcher players
-        //Abreu, J CWS 1B 0.261
-        //Guerrero, V TOR 1B 0.311
-
-        //adding pitcher
-
-        //adding
-
     }
 
     @Test
     public void getCatchers()
     {
+        //dataBase.catchers.add()
     }
 
     @Test

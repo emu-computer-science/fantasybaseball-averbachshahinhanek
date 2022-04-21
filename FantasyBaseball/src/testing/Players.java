@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Players implements Comparable<Players>, Serializable
 {
-    private String name;
-    private String team;
+    private final String name;
+    private final String team;
     private String position;
     private int order;
-    private boolean drafted = false;
+    private final boolean drafted = false;
 
     //Constructor for generic player.
     public Players(String name, String team, String position) {
@@ -92,7 +92,7 @@ public class Players implements Comparable<Players>, Serializable
 
     @Override
     public int compareTo(Players p) {
-        int compare = ((Players)p).getOrder();
+        int compare = p.getOrder();
         return this.order - compare;
     }
 }

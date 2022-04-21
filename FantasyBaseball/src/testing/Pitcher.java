@@ -4,10 +4,15 @@ import java.io.Serializable;
 
 public class Pitcher extends Players implements Serializable
 {
-    private String name;
-    private String team;
+    private final String name;
+    private final String team;
     private String position;
-    private double era, g, gs, ip, bb, so;
+    private final double era;
+    private final double g;
+    private final double gs;
+    private final double ip;
+    private final double bb;
+    private final double so;
 
     //Only for pitchers
     public Pitcher(String name, String team, String position, double era, double g,

@@ -1,15 +1,13 @@
 package testing;
 
-import hashmapversion.Teams;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
 
 public class Main {
     private static String[] arguments = new String[5];
-    private static League mlb = new League();
+    private static final League mlb = new League();
 
     public static void main(String[] args) throws Exception {
         //Implements script manager
@@ -64,11 +62,11 @@ public class Main {
                 p_e_valfun.getPvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("save")){
                 System.out.print("Enter a file name: ");
-                input = reader.readLine();;
+                input = reader.readLine();
                 onSerializeTeams(input, mlb.getTeams());
             } else if(arguments[0].equalsIgnoreCase("restore")){
                 System.out.print("Enter the name of existing file: ");
-                input = reader.readLine();;
+                input = reader.readLine();
                 onDeserializeTeams(input);
             }else {
                 System.out.println("Invalid command\n");

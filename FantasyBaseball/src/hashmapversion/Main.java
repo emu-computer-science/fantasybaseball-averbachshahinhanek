@@ -5,8 +5,8 @@ import java.util.*;
 public class Main
 {
     //private static Map<Teams.Key, Teams> solarSystem = new HashMap<>();
-    private static Map<Teams.Key, Teams> mapContainer = new HashMap<>();
-    private static Set<Teams> leagueMembers = new HashSet<>();
+    private static final Map<Teams.Key, Teams> mapContainer = new HashMap<>();
+    private static final Set<Teams> leagueMembers = new HashSet<>();
     static Teams memberA = new TeamsMembers("memberA");
     static Teams memberB = new TeamsMembers("memberB");
     static Teams memberC = new TeamsMembers("memberC");

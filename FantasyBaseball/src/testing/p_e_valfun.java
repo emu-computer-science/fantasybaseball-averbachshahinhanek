@@ -1,4 +1,5 @@
 package testing;
+
 import de.congrace.exp4j.Calculable;
 import de.congrace.exp4j.ExpressionBuilder;
 import de.congrace.exp4j.UnknownFunctionException;
@@ -8,8 +9,6 @@ import javax.script.ScriptException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 ////PLAYER1 PLAYER2 TEAM ERA G GS IP HB BB SO
@@ -22,7 +21,7 @@ public class p_e_valfun {
         Calculable calc = new ExpressionBuilder(evalExp)
                 .withVariableNames("G", "GS", "ERA", "IP", "BB")
                 .build();
-        calc.setVariable("G", Double.parseDouble(playerStat.get(5)));; //<-- Here is where we would call the function to get the player AVG
+        calc.setVariable("G", Double.parseDouble(playerStat.get(5)));//<-- Here is where we would call the function to get the player AVG
         calc.setVariable("GS", Double.parseDouble(playerStat.get(6)));
         calc.setVariable("ERA", Double.parseDouble((playerStat.get(4))));
         calc.setVariable("IP", Double.parseDouble(playerStat.get(7)));
@@ -40,7 +39,7 @@ public class p_e_valfun {
         Calculable calc = new ExpressionBuilder(evalExp)
                 .withVariableNames("AVG", "OBP", "AB", "SLG", "SB")
                 .build();
-        calc.setVariable("AVG", Double.parseDouble(playerStat.get(9)));; //<-- Here is where we would call the function to get the player AVG
+        calc.setVariable("AVG", Double.parseDouble(playerStat.get(9)));//<-- Here is where we would call the function to get the player AVG
         calc.setVariable("OBP", Double.parseDouble(playerStat.get(10)));
         calc.setVariable("AB", Double.parseDouble((playerStat.get(4))));
         calc.setVariable("SLG", Double.parseDouble(playerStat.get(11)));

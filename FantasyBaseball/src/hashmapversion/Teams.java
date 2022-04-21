@@ -11,8 +11,8 @@ public abstract class Teams {
     //private final double orbitalPeriod;
     private final Set<Teams> Players;
 
-    private static Map<Key, Teams> mapContainer = new HashMap<>();
-    private static Set<Teams> leagueMembers = new HashSet<>();
+    private static final Map<Key, Teams> mapContainer = new HashMap<>();
+    private static final Set<Teams> leagueMembers = new HashSet<>();
 
     public static void addLeagueMembers(TeamsMembers memberA) {
         mapContainer.put(memberA.getKey(), memberA);
@@ -90,8 +90,8 @@ public abstract class Teams {
     }
 
     public static final class Key {
-        private String name;
-        private EntryType entryType;
+        private final String name;
+        private final EntryType entryType;
 
         private Key(String name, EntryType entryType) {
             this.name = name;

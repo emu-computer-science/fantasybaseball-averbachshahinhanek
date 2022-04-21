@@ -2,15 +2,13 @@ package testing;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 
 
 public class Team implements Serializable {
     private ArrayList<Players> team = new ArrayList<>();// here
 
-    private String name;
+    private final String name;
 
     private int catcherC = 1;
     private int firstBaseC = 1;
@@ -35,7 +33,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 catcherC--;
                 return true;
@@ -45,7 +43,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 firstBaseC--;
                 return true;
@@ -55,7 +53,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 secondBaseC--;
                 return true;
@@ -65,7 +63,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 thirdBaseC--;
                 return true;
@@ -75,7 +73,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 SSC--;
                 return true;
@@ -85,7 +83,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 leftFieldC--;
                 return true;
@@ -95,7 +93,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 centerFieldC--;
                 return true;
@@ -105,7 +103,7 @@ public class Team implements Serializable {
                     return false;
                 }
                 teammate.assignWeight(teammate.getPosition());
-                System.out.println("Drafted: " + teammate.toString() + "\n");
+                System.out.println("Drafted: " + teammate + "\n");
                 team.add(teammate);
                 rightFieldC--;
                 return true;
@@ -119,35 +117,35 @@ public class Team implements Serializable {
                     case 5:
                         teammate.setPosition("P1");
                         teammate.assignWeight(teammate.getPosition());
-                        System.out.println("Drafted: " + teammate.toString() + "\n");
+                        System.out.println("Drafted: " + teammate + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 4:
                         teammate.setPosition("P2");
                         teammate.assignWeight(teammate.getPosition());
-                        System.out.println("Drafted: " + teammate.toString() + "\n");
+                        System.out.println("Drafted: " + teammate + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 3:
                         teammate.setPosition("P3");
                         teammate.assignWeight(teammate.getPosition());
-                        System.out.println("Drafted: " + teammate.toString() + "\n");
+                        System.out.println("Drafted: " + teammate + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 2:
                         teammate.setPosition("P4");
                         teammate.assignWeight(teammate.getPosition());
-                        System.out.println("Drafted: " + teammate.toString() + "\n");
+                        System.out.println("Drafted: " + teammate + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
                     case 1:
                         teammate.setPosition("P5");
                         teammate.assignWeight(teammate.getPosition());
-                        System.out.println("Drafted: " + teammate.toString() + "\n");
+                        System.out.println("Drafted: " + teammate + "\n");
                         team.add(teammate);
                         pitcherC--;
                         return true;
@@ -207,7 +205,7 @@ public class Team implements Serializable {
                 return;
             }
             if (player.getPosition().equals(position))
-                System.out.println(player.toString());
+                System.out.println(player);
         }
     }
 
@@ -217,42 +215,42 @@ public class Team implements Serializable {
             if (player.getPosition().equals("C")) {
                 if (catcherC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             } else if (player.getPosition().equals("1B")) {
                 if (firstBaseC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             } else if (player.getPosition().equals("2B")) {
                 if (secondBaseC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             } else if (player.getPosition().equals("3B")) {
                 if (thirdBaseC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             } else if (player.getPosition().equals("SS")) {
                 if (SSC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             } else if (player.getPosition().equals("LF")) {
                 if (leftFieldC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             } else if (player.getPosition().equals("RF")) {
                 if (rightFieldC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             } else if (player.getPosition().equals("CF")) {
                 if (centerFieldC == 0)
                     continue;
-                System.out.println(player.toString());
+                System.out.println(player);
                 continue;
             }
         }
@@ -303,41 +301,23 @@ public class Team implements Serializable {
     public boolean isDrafted(String position) {
         switch (position) {
             case "C":
-                if (catcherC == 0)
-                    return true;
-                return false;
+                return catcherC == 0;
             case "1B":
-                if (firstBaseC == 0)
-                    return true;
-                return false;
+                return firstBaseC == 0;
             case "2B":
-                if (secondBaseC == 0)
-                    return true;
-                return false;
+                return secondBaseC == 0;
             case "3B":
-                if (thirdBaseC == 0)
-                    return true;
-                return false;
+                return thirdBaseC == 0;
             case "SS":
-                if (SSC == 0)
-                    return true;
-                return false;
+                return SSC == 0;
             case "LF":
-                if (leftFieldC == 0)
-                    return true;
-                return false;
+                return leftFieldC == 0;
             case "RF":
-                if (rightFieldC == 0)
-                    return true;
-                return false;
+                return rightFieldC == 0;
             case "CF":
-                if (centerFieldC == 0)
-                    return true;
-                return false;
+                return centerFieldC == 0;
             case "P":
-                if (pitcherC == 0)
-                    return true;
-                return false;
+                return pitcherC == 0;
             default:
                 return false;
         }
