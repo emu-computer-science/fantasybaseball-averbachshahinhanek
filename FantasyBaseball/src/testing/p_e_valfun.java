@@ -3,6 +3,7 @@ import de.congrace.exp4j.Calculable;
 import de.congrace.exp4j.ExpressionBuilder;
 import de.congrace.exp4j.UnknownFunctionException;
 import de.congrace.exp4j.UnparsableExpressionException;
+import org.jetbrains.annotations.NotNull;
 
 import javax.script.ScriptException;
 import java.io.*;
@@ -34,7 +35,7 @@ public class p_e_valfun {
         return calc.calculate();
     }
 
-    public static double evalFun(String evalExp, ArrayList<String> playerStat) throws UnparsableExpressionException, UnknownFunctionException, FileNotFoundException {
+    public static double evalFun(String evalExp, @NotNull ArrayList<String> playerStat) throws UnparsableExpressionException, UnknownFunctionException, FileNotFoundException {
 
         //FIRST LAST POSITION TEAM AB R H HR SB AVG OBP SLG EVALFUN
         //System.out.println(playerStat);
