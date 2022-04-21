@@ -1,0 +1,23 @@
+{
+  "vendor" : "Oracle",
+  "product" : "OpenJDK",
+  "default" : true,
+  "jdk_version_major" : 18,
+  "jdk_version" : "18",
+  "suggested_sdk_name" : "openjdk-18",
+  "shared_index_aliases" : [ "openjdk-18", "18" ],
+  "packages" : [ {
+    "os" : "windows",
+    "arch" : "x86_64",
+    "url" : "https://download.java.net/java/GA/jdk18/43f95e8614114aeaa8e8a5fcf20a682d/36/GPL/openjdk-18_windows-x64_bin.zip",
+    "package_type" : "zip",
+    "unpack_prefix_filter" : "jdk-18",
+    "package_root_prefix" : "jdk-18",
+    "package_to_java_home_prefix" : "",
+    "archive_file_name" : "openjdk-18_windows-x64_bin.zip",
+    "install_folder_name" : "openjdk-18",
+    "archive_size" : 187504061,
+    "unpacked_size" : 311189739,
+    "sha256" : "a5b91d4c12752d44aa75df70ae3e2311287b3e60c288b07dade106376c688277"
+  } ]
+}
