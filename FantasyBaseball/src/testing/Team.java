@@ -168,6 +168,13 @@ public class Team implements Serializable {
         return team;
     }
 
+    //STARS command
+    public void stars() {
+        for(Players p : team) {
+            System.out.println(p.getPosition() + " " + p.getName());
+        }
+    }
+
     //Sorts based on players position
     public void team() {
         ArrayList<Players> temp = team;

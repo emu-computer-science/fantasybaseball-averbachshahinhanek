@@ -126,94 +126,26 @@ public abstract class Teams {
             return this.name + ": " + getPosition(this.entryType);
         }
     }
-//    static String getPosition(String type){
-//        switch (type){
-//            case "CATCHER":
-//                return "C";
-//
-//            case "FIRST_BASEMAN":
-//                return "1B";
-//
-//            case "SECOND_BASEMAN":
-//                return "2B";
-//
-//            case "THIRD_BASEMAN":
-//                return "3B";
-//
-//            case "SHORT_STOP":
-//                return "SS";
-//
-//            case "LEFT_FIELDER":
-//                return "LF";
-//
-//            case "RIGHT_FIELDER":
-//                return "RT";
-//
-//            case "CENTER_FIELDER":
-//                return "CF";
-//
-//            case "PICHER1":
-//                return "P1";
-//
-//            case "PICHER2":
-//                return "P2";
-//
-//            case "PICHER3":
-//                return "P3";
-//
-//            case "PICHER4":
-//                return "P4";
-//
-//            case "PICHER5":
-//                return "P5";
-//
-//        }
-//        return null;
-//    }
+
 
     static String getPosition(EntryType type){
-        switch (type){
-            case CATCHER:
-                return "C";
-
-            case FIRST_BASEMAN:
-                return "1B";
-
-            case SECOND_BASEMAN:
-                return "2B";
-
-            case THIRD_BASEMAN:
-                return "3B";
-
-            case SHORT_STOP:
-                return "SS";
-
-            case LEFT_FIELDER:
-                return "LF";
-
-            case RIGHT_FIELDER:
-                return "RT";
-
-            case CENTER_FIELDER:
-                return "CF";
-
-            case PICHER1:
-                return "P1";
-
-            case PICHER2:
-                return "P2";
-
-            case PICHER3:
-                return "P3";
-
-            case PICHER4:
-                return "P4";
-
-            case PICHER5:
-                return "P5";
-
-        }
-        return null;
+        return switch (type)
+                {
+                    case CATCHER -> "C";
+                    case FIRST_BASEMAN -> "1B";
+                    case SECOND_BASEMAN -> "2B";
+                    case THIRD_BASEMAN -> "3B";
+                    case SHORT_STOP -> "SS";
+                    case LEFT_FIELDER -> "LF";
+                    case RIGHT_FIELDER -> "RT";
+                    case CENTER_FIELDER -> "CF";
+                    case PICHER1 -> "P1";
+                    case PICHER2 -> "P2";
+                    case PICHER3 -> "P3";
+                    case PICHER4 -> "P4";
+                    case PICHER5 -> "P5";
+                    default -> null;
+                };
     }
 
 }

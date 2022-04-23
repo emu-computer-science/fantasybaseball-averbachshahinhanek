@@ -2,20 +2,19 @@ package testing;
 
 
 import hashmapversion.Teams;
+
+
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import java.io.*;
 import java.util.*;
 
 public class Main {
-
-
     private static String[] arguments = new String[5];
     private static League mlb = new League();
 
     public static void main(String[] args) throws Exception {
-
-
         //Implements script manager
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("JavaScript");
@@ -30,9 +29,9 @@ public class Main {
 
         //scan.nextLine();
         //Creation of databases
-        DataBase db = new DataBase();
-        db.initializePitcher(new File("Pitchers.txt"));
-        db.initializeBatters(new File("Batters.txt"));
+        DataBase db = new DataBase("Pitchers.txt", "Batters.txt");
+//        db.initializePitcher(new File("Pitchers.txt"));
+//        db.initializeBatters(new File("Batters.txt"));
         help();
 
         while(true) {
@@ -83,9 +82,13 @@ public class Main {
             } else if(arguments[0].equalsIgnoreCase("PVALFUN")){
                 peValfun.getPvalFun(arguments[1]);
             } else if(arguments[0].equalsIgnoreCase("save")){
-                onSerializeTeams(mlb, mlb.getTeams());
+                System.out.print("Enter a file name: ");
+                input = reader.readLine();;
+                onSerializeTeams(input, mlb.getTeams());
             } else if(arguments[0].equalsIgnoreCase("restore")){
-                onDeserializeTeams();
+                System.out.print("Enter the name of existing file: ");
+                input = reader.readLine();;
+                onDeserializeTeams(input);
             }else {
                 System.out.println("Invalid command\n");
             }
@@ -94,15 +97,15 @@ public class Main {
 
     static void help(){
         System.out.println("Please enter one of the following commands:\n\tODRAFT [playername] [league member]\n\t" +
-                "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tEVALFUN [Function]\n\tPVALFUN [Function]\n\tTEAM [team name]\n\tSAVE\n\tRESTORE\n\tHelp\n\tQuit");
+                "IDRAFT [playername]\n\tOVERALL [position]\n\tPOVERALL\n\tTEAM [team name]\n\tSAVE\n\tRESTORE\n\tHelp\n\tQuit");
     }
     //Credit to the Integerset provided resources:https://howtodoinjava.com/java/collections/arraylist/serialize-deserialize-arraylist/
     //Serialize teams and save them to file. That includes its sub indexes
-    private static void onSerializeTeams(League teams, ArrayList<Team> listTeams)
+    private static void onSerializeTeams(String filename, ArrayList<Team> listTeams)
     {
         try
         {
-            FileOutputStream fos = new FileOutputStream("teams.txt");
+            FileOutputStream fos = new FileOutputStream(filename);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(listTeams);
             oos.close();
@@ -116,11 +119,11 @@ public class Main {
 
     //Credit to the Integerset provided resources:https://howtodoinjava.com/java/collections/arraylist/serialize-deserialize-arraylist/
     //get the data from the text file and set it to Teams
-    private static void onDeserializeTeams()
+    private static void onDeserializeTeams(String filename)
     {
         try
         {
-            FileInputStream fis = new FileInputStream("teams.txt");
+            FileInputStream fis = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             mlb.setTeams((ArrayList) ois.readObject());
